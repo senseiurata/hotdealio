@@ -1,0 +1,35 @@
+<h1>Post Deal</h1>
+
+<form action="<%= deals_url %>" method="post">
+  <%= auth_token_helper %>
+  <label>URL
+    <input type="text" name="deal[url]">
+  </label>
+  <br>
+  <label>Title
+    <input type="text" name="deal[title]">
+  </label>
+  <br>
+  <label>Description
+    <textarea name="deal[description]"></textarea>
+  </label>
+  <br>
+  <label>Image URL
+    <input type="text" name="deal[image_url]">
+  </label>
+  <br>
+  <label>Categories
+    <% @categories.each do |category| %>
+      <label><%= category.name %>
+        <input type="checkbox"
+          name="deal[categories][]"
+          id="deal_categories_<%= category.name %>"
+          value="<%= category.name %>"
+          >
+      </label>
+    <% end %>
+  </label>
+  <br>
+
+  <input type="submit" value="Create Deal">
+</form>

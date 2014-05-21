@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hotdealio</title>
+  <title>hotdealio!</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<% flash[:errors].try(:each) do |error| %>
+  <p><%= error %></p>
+<% end %>
+
+<%= flash[:notice] %>
+
+<% if current_user %>
+  <p>Welcome, <%= current_user.username %></p>
+  <%= button_to "Sign Out", session_url, method: :delete %>
+<% end %>
 
 <%= yield %>
 
