@@ -11,13 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521101534) do
+ActiveRecord::Schema.define(version: 20140521223546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: true do |t|
     t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", force: true do |t|
+    t.text     "body",              null: false
+    t.integer  "parent_comment_id"
+    t.integer  "deal_id",           null: false
+    t.integer  "user_id",           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,7 +42,7 @@ ActiveRecord::Schema.define(version: 20140521101534) do
   add_index "deal_categories", ["deal_id"], name: "index_deal_categories_on_deal_id", using: :btree
 
   create_table "deals", force: true do |t|
-    t.string   "url",          null: false
+    t.text     "url",          null: false
     t.string   "title",        null: false
     t.text     "description"
     t.string   "image_url"

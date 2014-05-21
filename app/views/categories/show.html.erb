@@ -1,2 +1,7 @@
 <h1><%= @category.name %></h1>
-<%= link_to "<< Front Page", categories_url %>
+
+<ul>
+<% @deals.each do |deal| %>
+  <li><%= link_to deal.title, deal_url(deal) %></li>
+<% end %>
+</ul>

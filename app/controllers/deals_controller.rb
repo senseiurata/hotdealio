@@ -1,7 +1,8 @@
 class DealsController < ApplicationController
-  before_action :ensure_logged_in!, only: [:new, :edit]
+  before_action :ensure_logged_in!, only: [:new, :create, :edit, :update]
 
   def new
+    @deal = current_user.deals.new
     @categories = Category.all
 
     render :new
@@ -9,14 +10,15 @@ class DealsController < ApplicationController
 
   def create
     @deal = current_user.deals.new(deal_params)
-    @deal.submitter_id = current_user.id
 
     if @deal.save
       flash[:notice] = "Deal created!"
 
       redirect_to deal_url(@deal)
-    else
+    else      
       flash[:errors] = @deal.errors.full_messages
+
+      @categories = Category.all
 
       render :new
     end
@@ -24,6 +26,7 @@ class DealsController < ApplicationController
 
   def edit
     @deal = Deal.find(params[:id])
+    @categories = Category.all
 
     render :edit
   end
@@ -51,6 +54,8 @@ class DealsController < ApplicationController
   def show
     @deal = Deal.find(params[:id])
 
+    @categories = @deal.categories
+
     render :show
   end
 
@@ -64,7 +69,9 @@ class DealsController < ApplicationController
     redirect_to categories_url
   end
 
+  private
+
   def deal_params
-    params.require(:deal).permit(:url, :title, :description, :image_url)
+    params.require(:deal).permit(:url, :title, :description, :image_url, { :category_ids => [] })
   end
 end

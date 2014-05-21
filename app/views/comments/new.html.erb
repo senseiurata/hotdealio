@@ -1,0 +1,10 @@
+<form action="<%= deal_comments_url(params[:deal_id]) %>" method="post">
+  <%= auth_token_helper %>
+  <textarea name="comment[body]"></textarea>
+  <br>
+  <input type="submit">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <% if params[:parent_comment_id] %>
+    <input type="hidden" name="comment[parent_comment_id]" value="<%= params[:parent_comment_id] %>">
+  <% end %>
+</form>

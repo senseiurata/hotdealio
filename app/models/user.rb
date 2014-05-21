@@ -8,8 +8,9 @@ class User < ActiveRecord::Base
   validates :password_digest, presence: { message: "Password can't be blank" }
   validates :session_token, presence: true
 
-  has_many :deals, foreign_key: :submitter_id
-
+  has_many :deals, foreign_key: :submitter_id, inverse_of: :submitter
+  has_many :comments, inverse_of: :user
+  
   def ensure_session_token
     self.session_token ||= User.generate_session_token
   end

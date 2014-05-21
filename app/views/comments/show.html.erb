@@ -1,0 +1,9 @@
+<%= @comment.body %> by <%= @comment.user.username %><br><br>
+
+Reply to this comment:
+<form action="<%= deal_comments_url(params[:deal_id]) %>" method="post">
+  <%= auth_token_helper %>
+  <textarea name="comment[body]"></textarea><br>
+  <input type="submit">
+  <input type="hidden" name="comment[parent_comment_id]" value="<%= params[:id] %>">
+</form>

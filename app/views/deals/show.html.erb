@@ -1,3 +1,25 @@
+<h1><%= @deal.title %></h1>
 <img src="<%= @deal.image_url %>">
-<%= link_to @deal.title, @deal.url %>
-<%= @deal.description %>
+<p><%= link_to @deal.title, @deal.url %></p>
+<p><%= @deal.description %></p>
+<p>Categories:
+  <% @categories.each do |category| %>
+    <%= category.name %>
+  <% end %>
+</p>
+<% if @deal.submitter == current_user %>
+  <%= link_to "Edit Deal", edit_deal_url(@deal) %>
+  <%= button_to "Delete Deal", deal_url(@deal), method: :delete %>
+<% end %>
+
+<h2>Comments</h2>
+<%= link_to "Comment on this deal!", new_deal_comment_url(params[:id]) %><br><br>
+
+<ul>
+  <% comments_by_parent = @deal.comments_by_parent %>
+  <% comments_by_parent[nil].each do |top_level_comments| %>
+    <li>
+      <%= render "comments/comment", comment: top_level_comments, comments_by_parent: comments_by_parent %>
+    </li>
+  <% end %>
+</ul>

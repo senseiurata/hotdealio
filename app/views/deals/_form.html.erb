@@ -1,0 +1,47 @@
+<% if new_deal %>
+  <% action_url = deals_url %>
+  <% button_name = "Post Deal" %>
+<% else %>
+  <% action_url = deal_url(deal) %>
+  <% button_name = "Update Deal" %>
+<% end %>
+
+<form action="<%= action_url %>" method="post">
+  <%= auth_token_helper %>
+  <% unless new_deal %>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
+
+  <label>URL
+    <input type="text" name="deal[url]" value="<%= deal.url %>">
+  </label>
+  <br>
+  <label>Title
+    <input type="text" name="deal[title]" value="<%= deal.title %>">
+  </label>
+  <br>
+  <label>Description
+    <textarea name="deal[description]">
+      <%= deal.description %>
+    </textarea>
+  </label>
+  <br>
+  <label>Image URL
+    <input type="text" name="deal[image_url]" value="<%= deal.image_url %>">
+  </label>
+  <br>
+  <label>Categories
+    <% categories.each do |category| %>
+      <label><%= category.name %>
+        <input type="checkbox"
+          name="deal[category_ids][]"
+          value="<%= category.id %>"
+          <%= "checked" if deal.category_ids.include?(category.id) %>
+          >
+      </label>
+    <% end %>
+  </label>
+  <br>
+
+  <input type="submit" value="<%= button_name %>">
+</form>
