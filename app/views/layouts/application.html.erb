@@ -48,14 +48,22 @@
   </nav>
 </div>
 
-<% flash[:errors].try(:each) do |error| %>
-  <p><%= error %></p>
-<% end %>
-
-<%= flash[:notice] %>
-
 <div class="container">
-<%= yield %>
+  <% flash[:errors].try(:each) do |error| %>
+    <div class="alert alert-danger">
+      <%= error %>
+    </div>
+  <% end %>
+
+  <% unless flash[:notice].nil? %>
+    <div class="alert alert-info">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <div class="container">
+  <%= yield %>
+  </div>
 </div>
 
 </body>
