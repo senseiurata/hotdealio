@@ -1,12 +1,16 @@
 <h1><%= @deal.title %></h1>
 <img src="<%= @deal.image_url %>">
-<p><%= link_to @deal.title, @deal.url %></p>
+<p>(<%= @deal.votes %>) <%= link_to @deal.title, @deal.url %></p>
 <p><%= @deal.description %></p>
 <p>Categories:
   <% @categories.each do |category| %>
     <%= category.name %>
   <% end %>
 </p>
+
+<%= button_to "Upvote", action: :upvote %>
+<%= button_to "Downvote", action: :downvote %>
+
 <% if @deal.submitter == current_user %>
   <%= link_to "Edit Deal", edit_deal_url(@deal) %>
   <%= button_to "Delete Deal", deal_url(@deal), method: :delete %>

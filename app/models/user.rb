@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   has_many :deals, foreign_key: :submitter_id, inverse_of: :submitter
   has_many :comments, inverse_of: :user
+  has_many :user_votes
   
   def ensure_session_token
     self.session_token ||= User.generate_session_token
