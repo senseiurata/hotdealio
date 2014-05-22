@@ -27,9 +27,31 @@ class CommentsController < ApplicationController
     end
   end
 
+  def upvote
+    vote(1)
+  end
+
+  def downvote
+    vote(-1)
+  end
+
   private
 
   def comment_params
     params.require(:comment).permit(:body, :parent_comment_id)
   end
+
+  def vote(direction)
+    @comment = Comment.find(params[:id])
+    @user_vote = UserVote.find_by_votable_id_and_votable_type_and_user_id(@comment.id, "Comment", current_user.id)
+
+    if @user_vote
+      @user_vote.value == direction ? @user_vote.update_attributes(value: 0) : @user_vote.update_attributes(value: direction)
+    else
+      @comment.user_votes.create(user_id: current_user.id, value: direction)
+    end
+
+    redirect_to deal_url(params[:deal_id])
+  end
+
 end

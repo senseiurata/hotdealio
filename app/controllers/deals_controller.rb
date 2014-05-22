@@ -60,26 +60,12 @@ class DealsController < ApplicationController
     render :show
   end
 
-  def destroy
-    deal = Deal.find(params[:id])
-    
-    deal.destroy
-
-    flash[:notice] = "Deal deleted!"
-
-    redirect_to categories_url
-  end
-
   def upvote
     vote(1)
   end
 
   def downvote
     vote(-1)
-  end
-
-  def user_owns_deal?
-    redirect_to deal_url(@deal) unless @deal.user == current_user
   end
 
   private
@@ -90,11 +76,13 @@ class DealsController < ApplicationController
 
   def vote(direction)
     @deal = Deal.find(params[:id])
-    @user_vote = UserVote.find_by_deal_id_and_user_id(@deal, current_user.id)
+
+    @user_vote = UserVote.find_by_votable_id_and_votable_type_and_user_id(@deal.id, "Deal", current_user.id)
 
     if @user_vote
       @user_vote.value == direction ? @user_vote.update_attributes(value: 0) : @user_vote.update_attributes(value: direction)
     else
+      #UserVote.create(user_id: current_user.id, votable_id: @deal.id, votable_type: "Deal", value: direction)
       @deal.user_votes.create(user_id: current_user.id, value: direction)
     end
 

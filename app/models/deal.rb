@@ -5,7 +5,7 @@ class Deal < ActiveRecord::Base
   has_many :deal_categories, inverse_of: :deal, dependent: :destroy
   has_many :categories, through: :deal_categories
   has_many :comments, inverse_of: :deal
-  has_many :user_votes
+  has_many :user_votes, as: :votable
 
   belongs_to :submitter, class_name: "User", foreign_key: :submitter_id, inverse_of: :deals
 

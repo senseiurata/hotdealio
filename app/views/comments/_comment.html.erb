@@ -1,5 +1,7 @@
 <p>
-  <%= link_to comment.body, deal_comment_url(comment.deal.id, comment.id) %>
+  (<%= comment.votes %>) <%= comment.id %> <%= link_to comment.body, deal_comment_url(comment.deal.id, comment.id) %>
+  <%= button_to "Upvote", action: :upvote, controller: "comments", deal_id: comment.deal.id, id: comment.id %>
+  <%= button_to "Downvote", action: :downvote, controller: "comments", deal_id: comment.deal.id, id: comment.id %>
 </p>
 
 <ul>

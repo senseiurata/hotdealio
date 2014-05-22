@@ -4,7 +4,12 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:show, :index]
   resources :deals, only: [:new, :create, :edit, :update, :destroy, :show] do
-    resources :comments, only: [:create, :new, :show]
+    resources :comments, only: [:create, :new, :show] do
+      member do
+        post "upvote"
+        post "downvote"
+      end
+    end
     member do
       post "upvote"
       post "downvote"
