@@ -1,8 +1,25 @@
-<p>
-  (<%= comment.votes %>) <%= comment.id %> <%= link_to comment.body, deal_comment_url(comment.deal.id, comment.id) %>
-  <%= button_to "Upvote", action: :upvote, controller: "comments", deal_id: comment.deal.id, id: comment.id %>
-  <%= button_to "Downvote", action: :downvote, controller: "comments", deal_id: comment.deal.id, id: comment.id %>
-</p>
+<div>
+  <ul class="list-inline comments">
+    <li><span class="votes"><%= comment.votes %><span></li>
+    <li><%= button_to "▴", {
+        action: :upvote,
+        controller: "comments",
+        deal_id: comment.deal.id,
+        id: comment.id
+      }, class: "btn btn-xs upvote" %>
+    </li>
+    <li><%= button_to "▾", {
+        action: :downvote,
+        controller: "comments",
+        deal_id: comment.deal.id,
+        id: comment.id
+      }, class: "btn btn-xs downvote" %>
+    </li>
+    <li>
+      <%= link_to comment.body, deal_comment_url(comment.deal.id, comment.id) %>
+    </li>
+  <ul>
+</div>
 
 <ul>
   <% comments_by_parent[comment.id].each do |child_comment| %>

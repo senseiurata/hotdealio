@@ -1,29 +1,33 @@
-<h1><%= @deal.title %></h1>
-<img src="<%= @deal.image_url %>">
-<p>(<%= @deal.votes %>) <%= link_to @deal.title, @deal.url %></p>
-<p><%= @deal.description %></p>
-<p>Categories:
-  <% @categories.each do |category| %>
-    <%= category.name %>
+<div class="container panel panel-default">
+  <h1><%= @deal.title %></h1>
+  <img src="<%= @deal.image_url %>">
+  <p><span class="votes"><%= @deal.votes %></span><%= link_to @deal.title, @deal.url %></p>
+  <p><%= @deal.description %></p>
+  <p>Categories:
+    <% @categories.each do |category| %>
+      <%= category.name %>
+    <% end %>
+  </p>
+
+  <%= button_to "Upvote", { action: :upvote }, class: "btn btn-default upvote" %>
+  <%= button_to "Downvote", { action: :downvote }, class: "btn btn-default downvote" %>
+
+  <% if @deal.submitter == current_user %>
+    <%= link_to "Edit Deal", edit_deal_url(@deal) %>
+    <%= button_to "Delete Deal", deal_url(@deal), method: :delete %>
   <% end %>
-</p>
+</div>
 
-<%= button_to "Upvote", action: :upvote %>
-<%= button_to "Downvote", action: :downvote %>
+<div class="container">
+  <h2>Comments</h2>
+  <%= link_to "Comment on this deal!", new_deal_comment_url(params[:id]) %><br><br>
 
-<% if @deal.submitter == current_user %>
-  <%= link_to "Edit Deal", edit_deal_url(@deal) %>
-  <%= button_to "Delete Deal", deal_url(@deal), method: :delete %>
-<% end %>
-
-<h2>Comments</h2>
-<%= link_to "Comment on this deal!", new_deal_comment_url(params[:id]) %><br><br>
-
-<ul>
-  <% comments_by_parent = @deal.comments_by_parent %>
-  <% comments_by_parent[nil].each do |top_level_comments| %>
-    <li>
-      <%= render "comments/comment", comment: top_level_comments, comments_by_parent: comments_by_parent %>
-    </li>
-  <% end %>
-</ul>
+  <ul>
+    <% comments_by_parent = @deal.comments_by_parent %>
+    <% comments_by_parent[nil].each do |top_level_comments| %>
+      <li>
+        <%= render "comments/comment", comment: top_level_comments, comments_by_parent: comments_by_parent %>
+      </li>
+    <% end %>
+  </ul>
+</div>

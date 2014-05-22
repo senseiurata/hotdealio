@@ -1,0 +1,127 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap";
+
+$navbar-purple: #161656;
+$btn-barely-purple: #e7e7ff;
+$btn-dark-purple: #464686;
+$btn-dark-purple-hover: #565696;
+$a-dark-purple: #464686;
+$a-dark-purple-hover: #464686;
+$btn-blue: #4286c1;
+$btn-blue-hover: #5296d1;
+
+$text-votes: #464686;
+
+//navbar stuff
+.navbar {
+  min-height: 0
+};
+
+.navbar-static-top {
+  background-color: $navbar-purple;
+  color: white;
+};
+
+.nav-account-items > li {
+  margin: 5px 5px;
+};
+
+.btn-white {
+  background-color: white;
+  color: $btn-dark-purple;
+};
+
+.btn-white:hover {
+  background-color: $btn-barely-purple;
+  color: $btn-dark-purple;
+};
+
+.btn-blue {
+  background-color: $btn-blue;
+  color: white;
+};
+
+.btn-blue:hover {
+  background-color: $btn-blue-hover;
+  color: white;
+};
+
+.text-username {
+  font-weight: bold;
+};
+
+//anchor tag stuff
+a {
+  color: $a-dark-purple;
+};
+
+a:hover {
+  color: $a-dark-purple;
+};
+
+.category-items {
+  margin-top: 25px;
+};
+
+.logo {
+
+};
+
+.btn-post-new-deal {
+  margin: 30px;
+};
+
+.deal-row-container {
+  border-top: 1px solid #DDD;
+  padding-top: 5px;
+};
+
+.deal-front-page {
+  width: 150px;
+};
+
+//show page
+.upvote, .downvote {
+  background-color: $btn-blue;
+  color: white;
+  margin: 0 0;
+};
+
+.upvote:hover, .downvote:hover {
+  background-color: $btn-blue-hover;
+  color: white;
+  margin: 0 0;
+};
+
+ul.comments {
+  list-style-type: none;
+  margin: 5px 0;
+};
+
+ul.comments > li {
+  padding: 0;
+};
+
+.votes {
+  background-color: $text-votes;
+  color: white;
+  font-weight: bold;
+  padding: 2px 4px;
+  border-radius: 3px;
+  margin-right: 5px;
+};

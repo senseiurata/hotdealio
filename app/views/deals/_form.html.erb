@@ -6,42 +6,52 @@
   <% button_name = "Update Deal" %>
 <% end %>
 
-<form action="<%= action_url %>" method="post">
-  <%= auth_token_helper %>
-  <% unless new_deal %>
-    <input type="hidden" name="_method" value="patch">
-  <% end %>
-
-  <label>URL
-    <input type="text" name="deal[url]" value="<%= deal.url %>">
-  </label>
-  <br>
-  <label>Title
-    <input type="text" name="deal[title]" value="<%= deal.title %>">
-  </label>
-  <br>
-  <label>Description
-    <textarea name="deal[description]">
-      <%= deal.description %>
-    </textarea>
-  </label>
-  <br>
-  <label>Image URL
-    <input type="text" name="deal[image_url]" value="<%= deal.image_url %>">
-  </label>
-  <br>
-  <label>Categories
-    <% categories.each do |category| %>
-      <label><%= category.name %>
-        <input type="checkbox"
-          name="deal[category_ids][]"
-          value="<%= category.id %>"
-          <%= "checked" if deal.category_ids.include?(category.id) %>
-          >
-      </label>
+<div class="row">
+  <form action="<%= action_url %>" method="post" class="form-horizonal col-xs-6" role="form">
+    <%= auth_token_helper %>
+    <% unless new_deal %>
+      <input type="hidden" name="_method" value="patch" class="form-control">
     <% end %>
-  </label>
-  <br>
 
-  <input type="submit" value="<%= button_name %>">
-</form>
+    <div class="form-group">
+      <label for="deal_url" class="col-xs-2 control-label">URL</label>
+      <div class="col-xs-10">
+        <input type="text" class="form-control" name="deal[url]" id="deal_url" value="<%= deal.url %>" placeholder="Email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="deal_title" class="col-xs-2 control-label">Title</label>
+      <div class="col-xs-10">
+        <input type="text" name="deal[title]" id="deal_title" value="<%= deal.title %>" class="form-control" placeholder="Title">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="deal_description" class="col-xs-2 control-label">Description</label>
+      <div class="col-xs-10">
+        <textarea name="deal[description]" id="deal_description" placeholder="Description" class="form-control">
+          <%= deal.description %>
+        </textarea> 
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="deal_image_url" class="col-xs-2 control-label">Image URL</label>
+      <div class="col-xs-10">
+        <input type="text" name="deal[image_url]" id="deal_image_url" value="<%= deal.image_url %>" class="form-control" placeholder="Image URL">
+      </div>    
+    </div>
+    <div class="form-group">
+      <label>Categories</label>
+      <% categories.each do |category| %>
+        <label for="deal_category_<%= category.name %>" class="control-label"><%= category.name %></label>
+          <input type="checkbox"
+            name="deal[category_ids][]"
+            id="deal_category_<%= category.name %>"
+            value="<%= category.id %>"
+            <%= "checked" if deal.category_ids.include?(category.id) %>
+            >
+      <% end %>
+    </div>
+
+    <input type="submit" value="<%= button_name %>" class="btn btn-default">
+  </form>
+</div>

@@ -1,11 +1,27 @@
-<% @categories.each do |category| %>
-  <%= link_to category.name, category_url(category) %>
-<% end %>
+<%# @categories.each do |category| %>
+  <%#= link_to category.name, category_url(category) %>
+<%# end %>
 
-<ul>
-<% @deals.each do |deal| %>
-  <li>
-    (<%= deal.votes %>) <%= link_to deal.title, deal_url(deal) %>
-  </li>
-<% end %>
-</ul>
+<div class="container deal-row-container">
+  <div class="row">
+    <div class="row">
+      <div class="col-xs-8">
+      <% @deals.each_with_index do |deal, i| %>
+        <% if i % 4 == 0 %>
+          <div class='row'> 
+        <% end %>
+          <div class="col-xs-3">
+            <a href="<%= deal_url(deal) %>">
+              <img src="<%= deal.image_url %>" class="deal-front-page">
+            </a>
+            <span class="votes"><%= deal.votes %></span><%= link_to deal.title, deal_url(deal) %>
+          </div>
+        <% if i % 4 == 3 %>
+          </div> 
+        <% end %>
+      <% end %>
+      <div class="col-xs-4">
+      </div>
+    </div>
+  </div>
+</div>
