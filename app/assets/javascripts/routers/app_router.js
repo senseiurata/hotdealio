@@ -1,16 +1,27 @@
 window.Hotdealio.Routers.AppRouter = Backbone.Router.extend({
   routes: {
     "": "dealsIndex",
+    "deals/:id": "dealShow",
     "new": "dealNew",
     ":id": "categoryShow"
   },
 
-  categoriesIndex: function () {
-    var categories = Hotdealio.categories;
+  // categoriesIndex: function () {
+  //   var categories = Hotdealio.categories;
 
-    categories.fetch();
+  //   categories.fetch();
 
-    var view = new Hotdealio.Views.CategoriesIndex({ collection: categories });
+  //   var view = new Hotdealio.Views.CategoriesIndex({ collection: categories });
+
+  //   this._swapView(view);
+  // },
+
+  dealShow: function (id) {
+    var deal = new Hotdealio.Models.Deal({ id: id });
+
+    deal.fetch();
+
+    var view = new Hotdealio.Views.DealShow({ model: deal });
 
     this._swapView(view);
   },

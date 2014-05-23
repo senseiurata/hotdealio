@@ -1,8 +1,15 @@
 window.Hotdealio.Views.CategoriesIndex = Backbone.View.extend({
   template: JST['categories/index'],
 
-  initialize: function () {
-    this.listenTo(this.collection, "sync add remove", this.render);
+  events: {
+   // "click button.post-new-deal": "routeToDealNew"
+  },
+
+  initialize: function (options) {
+    this.router = options.router;
+
+    this.listenTo(this.collection, "sync", this.render);
+    this.listenTo(this.router, "route", this.render);
   },
 
   render: function () {
@@ -11,5 +18,11 @@ window.Hotdealio.Views.CategoriesIndex = Backbone.View.extend({
     this.$el.html(renderedContent);
 
     return this;
-  }
+  },
+
+  // routeToDealNew: function (event) {
+  //   event.preventDefault();
+
+  //   this.router.dealNew();
+  // }
 });

@@ -7,7 +7,7 @@
         <% category.deals().each(function (deal, index) { %>
           <div class="col-xs-3">
             <a href="/#<%= deal.get('id') %>">
-              <img src="<%= deal.escape('image_url') %>" class="deal-front-page">
+              <img src="<%= deal.escape('image_url') %>" class="deal-image-front-page">
             </a>
             <span class="votes">
               <%= deal.escape('votes') %>

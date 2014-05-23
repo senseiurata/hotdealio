@@ -1,0 +1,14 @@
+<div class="container panel panel-default">
+  <h1><%= deal.escape('title') %></h1>
+  <img src="<%= deal.escape('image_url') %>" class="deal-image">
+  <p><span class="votes"><%= deal.escape('votes') %></span><a href="<%= deal.escape('url') %>"><%= deal.escape('title') %></a></p>
+  <p><%= deal.escape('description') %></p>
+  <p>Categories:
+    <% deal.categories().each(function (category) { %>
+      <%= category.escape('name') %>
+    <% }); %>
+  </p>
+</div>
+
+<button class="btn btn-default upvote">Upvote</button>
+<button class="btn btn-default downvote">Downvote</button>

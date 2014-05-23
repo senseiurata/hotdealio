@@ -1,3 +1,25 @@
-<% categories.each(function (category) { %>
-  <%= category.escape('name') %>
-<% }); %>
+  <nav class="navbar navbar-default" role="navigation">
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="/#">
+          <img src="/assets/hotdealio-logo.png">
+        </a>
+      </li>
+      <li>
+      <nav class="navbar navbar-default category-items" role="navigation">
+        <ul class="nav navbar-default navbar-nav">
+        <% categories.each(function (category) { %>
+          <li>
+            <a href="/#/<%= category.get('id') %>">
+              <%= category.escape('name') %>
+            </a>
+          </li>
+        <% }); %>
+        </ul>
+      </nav>
+      </li>
+    </ul>
+    <div class="pull-right">
+      <a href="#/new" class="btn btn-lg btn-blue pull-right btn-post-new-deal post-new-deal">Post New Deal</a>
+    </div>
+  </nav>

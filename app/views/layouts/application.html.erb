@@ -22,34 +22,6 @@
   </div>
 </nav>
 
-<div class="container header">
-  <nav class="navbar navbar-default" role="navigation">
-    <ul class="nav navbar-nav">
-      <li>
-        <a href="/#">
-          <%= image_tag "hotdealio-logo.png", class: "logo" %>
-        </a>
-      </li>
-      <li>
-      <nav class="navbar navbar-default category-items" role="navigation">
-        <ul class="nav navbar-default navbar-nav">
-        <% Category.all.each do |category| %>
-          <li>
-            <a href="#<%= category.id %>">
-              <%= category.name %>
-            </a>
-          </li>
-        <% end %>
-        </ul>
-      </nav>
-      </li>
-    </ul>
-    <div class="pull-right">
-      <%= button_to "Post New Deal", "/#new", method: :get, class: "btn btn-lg btn-blue pull-right btn-post-new-deal" %>
-    </div>
-  </nav>
-</div>
-
 <div class="container">
   <% flash[:errors].try(:each) do |error| %>
     <div class="alert alert-danger">

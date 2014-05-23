@@ -43,6 +43,8 @@ class CommentsController < ApplicationController
 
   def vote(direction)
     @comment = Comment.find(params[:id])
+
+    #fix later: messy
     @user_vote = UserVote.find_by_votable_id_and_votable_type_and_user_id(@comment.id, "Comment", current_user.id)
 
     if @user_vote

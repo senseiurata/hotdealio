@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :categories, only: [:show, :index, :create]
     resources :deals, only: [:new, :create, :edit, :update, :destroy, :show, :index]
+    resources :user_votes, only: [:create, :update]
   end
 
   root to: "static_pages#root"

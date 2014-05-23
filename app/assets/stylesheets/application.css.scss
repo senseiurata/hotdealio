@@ -79,7 +79,8 @@ a:hover {
 };
 
 .logo {
-
+  width: 339px;
+  height: 73px;
 };
 
 .btn-post-new-deal {
@@ -91,7 +92,8 @@ a:hover {
   padding-top: 5px;
 };
 
-.deal-front-page {
+.deal-image-front-page {
+  margin: 10px 0;
   width: 150px;
 };
 
@@ -121,7 +123,13 @@ ul.comments > li {
   background-color: $text-votes;
   color: white;
   font-weight: bold;
-  padding: 2px 1px 2px 4px;
+  padding: 2px 3px 2px 4px;
   border-radius: 3px;
   margin-right: 5px;
+};
+
+//deal show
+.deal-image {
+  margin: 3px;
+
 };

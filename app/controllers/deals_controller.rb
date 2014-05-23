@@ -77,6 +77,7 @@ class DealsController < ApplicationController
   def vote(direction)
     @deal = Deal.find(params[:id])
 
+    #fix later: messy
     @user_vote = UserVote.find_by_votable_id_and_votable_type_and_user_id(@deal.id, "Deal", current_user.id)
 
     if @user_vote

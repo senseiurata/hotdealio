@@ -4,10 +4,19 @@ window.Hotdealio = {
   Views: {},
   Routers: {},
   initialize: function() {
+    this.$navbarContent = $('#navbar-content');
     this.$content = $('#content');
     this.categories = new Hotdealio.Collections.Categories();
 
-    new Hotdealio.Routers.AppRouter();
+    var navbarView = new Hotdealio.Views.CategoriesIndex({
+      router: new Hotdealio.Routers.AppRouter(),
+      collection: this.categories
+    });
+
+    this.categories.fetch();
+
+    this.$navbarContent.html(navbarView.render().$el)
+
     Backbone.history.start();
   }
 };
