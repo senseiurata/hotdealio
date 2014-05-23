@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
       log_in!(user)
 
-      redirect_to categories_url
+      redirect_to "/#"
     else
       if flash.now[:errors].nil?
         flash.now[:errors] = ["Invalid credentials!"]

@@ -1,0 +1,23 @@
+<h1>All Deals</h1>
+
+<div class="container deal-row-container">
+  <div class="row">
+    <div class="row">
+      <div class="col-xs-8">
+        <% deals.each(function (deal, index) { %>
+          <div class="col-xs-3">
+            <a href="/#deals/<%= deal.get('id') %>">
+              <img src="<%= deal.escape('image_url') %>" class="deal-front-page">
+            </a>
+            <span class="votes">  </span>
+            <a href="/#deals/<%= deal.get('id') %>">
+              <%= deal.escape('title') %>
+            </a>
+          </div>
+        <% }); %>
+      </div>
+      <div class="col-xs-4">
+      </div>
+    </div>
+  </div>
+</div>

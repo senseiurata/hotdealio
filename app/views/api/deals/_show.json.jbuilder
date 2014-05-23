@@ -1,0 +1,1 @@
+json.partial!("api/deals/deal", deal: deal)

@@ -1,0 +1,1 @@
+json.(deal, :id, :url, :title, :description, :image_url, :submitter_id, :created_at, :updated_at)

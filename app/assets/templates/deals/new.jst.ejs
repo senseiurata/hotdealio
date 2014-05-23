@@ -1,0 +1,40 @@
+<div class="row">
+  <form class="form-horizonal col-xs-6" role="form">
+    <div class="form-group">
+      <label for="deal_url" class="col-xs-2 control-label">URL</label>
+      <div class="col-xs-10">
+        <input type="text" class="form-control" name="deal[url]" id="deal_url" placeholder="Email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="deal_title" class="col-xs-2 control-label">Title</label>
+      <div class="col-xs-10">
+        <input type="text" name="deal[title]" id="deal_title" class="form-control" placeholder="Title">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="deal_description" class="col-xs-2 control-label">Description</label>
+      <div class="col-xs-10">
+        <textarea name="deal[description]" id="deal_description" placeholder="Description" class="form-control"></textarea> 
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="deal_image_url" class="col-xs-2 control-label">Image URL</label>
+      <div class="col-xs-10">
+        <input type="text" name="deal[image_url]" id="deal_image_url" class="form-control" placeholder="Image URL">
+      </div>    
+    </div>
+    <div class="form-group">
+      <label>Categories</label>
+      <% categories.each(function (category) { %>
+        <label for="deal_category_<%= category.escape('name') %>" class="control-label"><%= category.escape('name') %></label>
+          <input type="checkbox"
+            name="deal[category_ids][]"
+            id="deal_category_<%= category.escape('name') %>"
+            value="<%= category.get('id') %>">
+      <% }); %>
+    </div>
+
+    <input type="submit" class="btn btn-default">
+  </form>
+</div>

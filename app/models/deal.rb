@@ -20,6 +20,12 @@ class Deal < ActiveRecord::Base
   end
 
   def votes
-    self.user_votes.sum(:value)
+    num_votes = self.user_votes.sum(:value)
+
+    if num_votes > 0
+      "+" + num_votes.to_s
+    else
+      num_votes.to_s
+    end
   end
 end

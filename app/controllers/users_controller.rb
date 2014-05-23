@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
       log_in!(user)
 
-      redirect_to categories_url
+      redirect_to "/#"
     else
       flash.now[:errors] = user.errors.full_messages
 

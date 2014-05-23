@@ -29,6 +29,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'rails_12factor'
 
+gem 'backbone-on-rails'
+gem 'ejs'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
