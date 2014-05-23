@@ -9,7 +9,9 @@
             <a href="/#deals/<%= deal.get('id') %>">
               <img src="<%= deal.escape('image_url') %>" class="deal-front-page">
             </a>
-            <span class="votes">  </span>
+            <span class="votes">
+              <%= deal.escape('votes') %>
+            </span>
             <a href="/#deals/<%= deal.get('id') %>">
               <%= deal.escape('title') %>
             </a>
