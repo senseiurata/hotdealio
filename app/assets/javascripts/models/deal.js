@@ -12,6 +12,12 @@ window.Hotdealio.Models.Deal = Backbone.Model.extend({
       this.categories().set(payload.categories, { parse: true });
       delete payload.categories;
     }
+    if (payload.user_vote) {
+      var a = new Hotdealio.Models.UserVote(payload.user_vote, { parse: true });
+
+      delete payload.user_vote
+      debugger;
+    }
 
     return payload;
   }

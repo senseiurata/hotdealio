@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
+//= require serializeJSON
 //= require underscore
 //= require backbone
 //= require hotdealio
@@ -21,4 +23,3 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
-//= require bootstrap

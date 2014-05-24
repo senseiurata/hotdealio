@@ -1,0 +1,1 @@
+json.(user_vote, :id, :user_id, :votable_id, :votable_type)

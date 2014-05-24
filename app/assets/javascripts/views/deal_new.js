@@ -6,6 +6,10 @@ window.Hotdealio.Views.DealNew = Backbone.View.extend({
     this.listenTo(this.categories, "sync", this.render)
   },
 
+  events: {
+    "submit form": "createDeal"
+  },
+
   render: function () {
     var renderedContent = this.template({ 
       deal: this.model,
@@ -15,5 +19,19 @@ window.Hotdealio.Views.DealNew = Backbone.View.extend({
     this.$el.html(renderedContent);
 
     return this;
+  },
+
+  createDeal: function (event) {
+    event.preventDefault();
+
+    var attr = $(event.currentTarget).serializeJSON();
+
+    var model = new Hotdealio.Models.Deal(attr);
+
+    model.save({}, {
+      success: function () {
+        Backbone.history.navigate("#/deals/" + model.get('id'));
+      }
+    })
   }
 });
