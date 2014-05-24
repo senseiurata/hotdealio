@@ -9,7 +9,11 @@ module Api
     def show
       @deal = Deal.find(params[:id])
 
-      render  partial: "api/deals/show", locals: { deal: @deal }
+      user_votes = @deal.user_votes
+
+      @current_user_vote = user_votes.select { |user_vote| user_vote.user_id == current_user.id }.first
+
+      render  partial: "api/deals/show", locals: { deal: @deal, current_user_vote: @current_user_vote }
     end
   end
 end

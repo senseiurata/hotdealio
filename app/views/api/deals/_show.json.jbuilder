@@ -1,1 +1,1 @@
-json.partial!("api/deals/deal", deal: deal)
+json.partial!("api/deals/deal", deal: deal, current_user_vote: current_user_vote)
