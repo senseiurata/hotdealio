@@ -2,7 +2,7 @@ window.Hotdealio.Views.CategoriesIndex = Backbone.View.extend({
   template: JST['categories/index'],
 
   events: {
-   // "click button.post-new-deal": "routeToDealNew"
+
   },
 
   initialize: function (options) {
@@ -18,11 +18,5 @@ window.Hotdealio.Views.CategoriesIndex = Backbone.View.extend({
     this.$el.html(renderedContent);
 
     return this;
-  },
-
-  // routeToDealNew: function (event) {
-  //   event.preventDefault();
-
-  //   this.router.dealNew();
-  // }
+  }
 });

@@ -1,4 +1,4 @@
-window.Hotdealio.Views.DealShow = Backbone.View.extend({
+window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
   template: JST['deals/show'],
 
   events: {
@@ -8,6 +8,8 @@ window.Hotdealio.Views.DealShow = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model.comments(), "add", this.addComment);
+    this.listenTo(this.model.comments(), "remove", this.removeComment);
   },
 
   render: function () {
@@ -24,6 +26,25 @@ window.Hotdealio.Views.DealShow = Backbone.View.extend({
     }
 
     return this;
+  },
+
+  addComment: function (comment) {
+    var commentShowView = new Hotdealio.Views.CommentShow({
+      model: comment
+    });
+  
+    this.addSubview("div.comment-items", listShowView);
+  },
+
+  removeComment: function (comment) {
+    var subview = _.find(
+      this.subviews("div.comment-items"),
+      function (subview) {
+        return subview.model === comment;
+      }
+    );
+
+    this.removeSubview(".comment-items", subview);
   },
 
   upvote: function (event) {
