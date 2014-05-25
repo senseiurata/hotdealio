@@ -34,13 +34,13 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
 
   addComment: function (comment) {
     console.log(comment.get('body'));
-    console.log($('div.comment-items'));
+    console.log($('ul.comment-items'));
 
     var commentShowView = new Hotdealio.Views.CommentShow({
       model: comment
     });
   
-    this.addSubview("div.comment-items", commentShowView);
+    this.addSubview("ul.comment-items", commentShowView);
   },
 
   removeComment: function (comment) {

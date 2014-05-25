@@ -29,17 +29,19 @@ window.Hotdealio.Models.Deal = Backbone.Model.extend({
       delete payload.userVote
     }
     if (payload.comments) {
-      var models = [];
-      var that = this;
-
-      _.each(payload.comments, function (comment) {
-        models.push(new Hotdealio.Models.Comment(comment, { deal: that}))
-      });
-
-      //doesn't work for some reason
+      //doesn't work
       //this.comments().set(payload.comments, { parse: true });
       
-      this.comments().set(models, { parse: true });
+      //works
+      this.comments().set(payload.comments);
+
+      //works too
+      //var models = [];
+      //var that = this;
+      //_.each(payload.comments, function (comment) {
+      //  models.push(new Hotdealio.Models.Comment(comment, { deal: that}))
+      //});
+      //this.comments().set(models, { parse: true });
 
       console.log(this.comments())
 
