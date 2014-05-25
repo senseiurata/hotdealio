@@ -18,7 +18,9 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :categories, only: [:show, :index, :create]
-    resources :deals, only: [:new, :create, :edit, :update, :destroy, :show, :index]
+    resources :deals, only: [:new, :create, :edit, :update, :destroy, :show, :index] do
+      resources :comments, only: [:create, :update]
+    end
     resources :user_votes, only: [:create, :update]
   end
 
