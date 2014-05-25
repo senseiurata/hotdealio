@@ -24,13 +24,15 @@ window.Hotdealio.Views.DealNew = Backbone.View.extend({
   createDeal: function (event) {
     event.preventDefault();
 
+    var that = this;
+
     var attr = $(event.currentTarget).serializeJSON();
 
-    var model = new Hotdealio.Models.Deal(attr);
+    this.model.set(attr);
 
-    model.save({}, {
+    this.model.save({}, {
       success: function () {
-        Backbone.history.navigate("#/deals/" + model.get('id'));
+        Backbone.history.navigate("#/deals/" + that.model.get('id'));
       }
     })
   }

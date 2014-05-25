@@ -1,6 +1,10 @@
 window.Hotdealio.Models.Deal = Backbone.Model.extend({
   urlRoot: "/api/deals",
 
+  initialize: function (attr, options) {
+    this.userVote = options.userVote
+  },
+
   categories: function () {
     this._categories = this._categories || 
       new Hotdealio.Collections.Categories([], { deal: this });
@@ -12,11 +16,10 @@ window.Hotdealio.Models.Deal = Backbone.Model.extend({
       this.categories().set(payload.categories, { parse: true });
       delete payload.categories;
     }
-    if (payload.user_vote) {
-      var a = new Hotdealio.Models.UserVote(payload.user_vote, { parse: true });
+    if (payload.userVote) {
+      this.userVote.set(payload.userVote, { parse: true });
 
-      delete payload.user_vote
-      debugger;
+      delete payload.userVote
     }
 
     return payload;

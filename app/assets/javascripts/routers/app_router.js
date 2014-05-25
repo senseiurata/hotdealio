@@ -17,7 +17,10 @@ window.Hotdealio.Routers.AppRouter = Backbone.Router.extend({
   // },
 
   dealShow: function (id) {
-    var deal = new Hotdealio.Models.Deal({ id: id });
+    var deal = new Hotdealio.Models.Deal(
+      { id: id },
+      { userVote: new Hotdealio.Models.UserVote() }
+    );
 
     deal.fetch();
 
@@ -37,7 +40,10 @@ window.Hotdealio.Routers.AppRouter = Backbone.Router.extend({
   },
 
   dealNew: function () {
-    var deal = new Hotdealio.Models.Deal();
+    var deal = new Hotdealio.Models.Deal(
+      {},
+      { userVote: new Hotdealio.Models.UserVote() }
+    );
 
     Hotdealio.categories.fetch();
 
@@ -46,7 +52,7 @@ window.Hotdealio.Routers.AppRouter = Backbone.Router.extend({
       categories: Hotdealio.categories
     });
 
-    this._swapView(view);    
+    this._swapView(view);
   },
 
   categoryShow: function (id) {

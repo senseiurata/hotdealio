@@ -97,7 +97,12 @@ a:hover {
   width: 150px;
 };
 
-//show page
+//deal show page
+.deal-image {
+  margin: 3px;
+
+};
+
 .upvote, .downvote {
   background-color: $btn-blue;
   color: white;
@@ -109,6 +114,30 @@ a:hover {
   color: white;
   margin: 0 0;
 };
+
+.upvoted {
+  background-color: $btn-dark-purple;
+  color: white;
+  margin: 0 0;  
+}
+
+.upvoted:hover {
+  background-color: $btn-dark-purple-hover;
+  color: white;
+  margin: 0 0;
+}
+
+.downvoted {
+  background-color: $btn-dark-purple;
+  color: white;
+  margin: 0 0;  
+}
+
+.downvoted:hover {
+  background-color: $btn-dark-purple-hover;
+  color: white;
+  margin: 0 0;
+}
 
 ul.comments {
   list-style-type: none;
@@ -128,8 +157,3 @@ ul.comments > li {
   margin-right: 5px;
 };
 
-//deal show
-.deal-image {
-  margin: 3px;
-
-};
