@@ -1,4 +1,4 @@
-json.(comment, :id, :body, :parent_comment_id, :deal_id, :user_id, :created_at, :updated_at)
+json.(comment, :id, :body, :parent_comment_id, :deal_id, :user_id, :votes, :created_at, :updated_at)
 json.comments do 
   json.array! comment.child_comments, partial: "api/comments/comment", as: :comment
 end

@@ -1,1 +1,13 @@
-<%= comment.get('body') %>
+<div>
+  <ul class="list-inline comments">
+    <li><span class="votes"><%= comment.escape('votes') %><span></li>
+    <li><button class="btn btn-xs upvote">▴</button></li>
+    <li><button class="btn btn-xs downvote">▾</button>
+    </li>
+    <li>
+      <%= comment.get('body') %>
+    </li>
+  <ul>
+</div>
+
+<ul class="comment-items-<%= comment.get('id') %>"></ul>

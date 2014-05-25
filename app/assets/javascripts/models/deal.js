@@ -36,14 +36,12 @@ window.Hotdealio.Models.Deal = Backbone.Model.extend({
       this.comments().set(payload.comments);
 
       //works too
-      //var models = [];
-      //var that = this;
-      //_.each(payload.comments, function (comment) {
+      // var models = [];
+      // var that = this;
+      // _.each(payload.comments, function (comment) {
       //  models.push(new Hotdealio.Models.Comment(comment, { deal: that}))
-      //});
-      //this.comments().set(models, { parse: true });
-
-      console.log(this.comments())
+      // });
+      // this.comments().set(models, { parse: true });
 
       delete payload.comments
     }
