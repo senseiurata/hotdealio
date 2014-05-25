@@ -4,7 +4,9 @@ window.Hotdealio.Views.CategoryShow = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.deals(), "add", this.addDeal);
-    this.listenTo(this.model.deals(), "remove", this.removeDeal);    
+    this.listenTo(this.model.deals(), "remove", this.removeDeal);
+
+    this.model.deals().each(this.addDeal.bind(this));
   },
 
   render: function () {
@@ -17,11 +19,11 @@ window.Hotdealio.Views.CategoryShow = Backbone.CompositeView.extend({
   },
 
   addDeal: function (deal) {
-    // var dealShowView = new Hotdealio.Views.DealShow({
-    //   model: list
-    // });
+    var dealShowView = new Hotdealio.Views.DealShow({
+      model: list
+    });
   
-    // this.addSubview("div.deal-item", dealShowView);
+    this.addSubview("div.deal-item", dealShowView);
   },
 
   removeDeal: function (deal) {
