@@ -10,8 +10,7 @@
               <img src="<%= deal.escape('image_url') %>" class="deal-image-front-page">
             </a>
             <span class="votes">
-              <%= deal.escape('votes') %>
-            </span>
+              <% if (deal.get('votes') > 0) { %>+<% } %><%= deal.get('votes') %></span>
             <a href="/#/deals/<%= deal.get('id') %>">
               <%= deal.escape('title') %>
             </a>

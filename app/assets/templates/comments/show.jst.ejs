@@ -1,11 +1,11 @@
 <div>
   <ul class="list-inline comments">
     <li>
+      <!-- fix later: fix slight inefficiency -->
       <span class="votes">
-        <%= comment.escape('votes') %>
-      </span>
+        <% if (comment.get('votes') > 0) { %>+<% } %><%= comment.get('votes') %></span>
     </li>
-    <!-- fix later: don't hard code class -->
+    <!-- fix later: make consistent with upvote/downvote deals -->
     <li>
       <button class="btn btn-xs comment-upvote comment-<%= comment.get('id') %>-upvote
         <% if (comment.userVote.get('value') === 1) { %>
@@ -23,7 +23,32 @@
       </button>
     </li>
     <li>
-      <%= comment.get('body') %>
+      <%= comment.escape('body') %>
+    </li>
+    <li>
+
+      <button class="btn btn-primary" data-toggle="modal" data-target=".post-reply-modal-<%= comment.get('id') %>">Reply</button>
+
+      <div class="modal fade post-reply-modal-<%= comment.get('id') %>" tabindex="-1" role="dialog" aria-labelledby="replyLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h4 class="modal-title" id="replyLabel">Reply</h4>
+            </div>
+            <div class="modal-body">
+
+                <form class="form-horizonal col-xs-6 deal-post-comment" role="form">
+                  <textarea name="comment[body]" id="comment_body" placeholder='Reply to "<%= comment.escape('body') %>"' class="form-control"></textarea> 
+
+                  <input type="submit" class="btn btn-default">
+                </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
     </li>
   <ul>
 </div>

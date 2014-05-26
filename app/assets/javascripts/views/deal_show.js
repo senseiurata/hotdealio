@@ -4,6 +4,7 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
   events: {
     "click button.deal-upvote": "upvote",
     "click button.deal-downvote": "downvote",
+    "submit form.deal-post-comment": "postComment",
   },
 
   initialize: function () {
@@ -143,6 +144,26 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
       votable_type: "Deal",
       votable_id: this.model.get('id'),
       value: value
+    });
+  },
+
+  postComment: function (event) {
+    event.preventDefault();
+
+    var that = this;
+
+    var attr = $(event.currentTarget).serializeJSON();
+
+    var comment = new Hotdealio.Models.Comment(attr, {
+      deal: this.model
+    });
+
+    comment.save({}, {
+      success: function () {
+        that.addComment(comment);
+        $('#comment_body').val("");
+        $('.post-deal-comment-modal').modal('hide');
+      }
     });
   }
 

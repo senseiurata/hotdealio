@@ -6,13 +6,12 @@
       <div class="col-xs-8">
         <% category.deals().each(function (deal, index) { %>
           <div class="col-xs-3">
-            <a href="/#<%= deal.get('id') %>">
+            <a href="/#/deals/<%= deal.get('id') %>">
               <img src="<%= deal.escape('image_url') %>" class="deal-image-front-page">
             </a>
             <span class="votes">
-              <%= deal.escape('votes') %>
-            </span>
-            <a href="/#deals/<%= deal.get('id') %>">
+              <% if (deal.get('votes') > 0) { %>+<% } %><%= deal.get('votes') %></span>
+            <a href="/#/deals/<%= deal.get('id') %>">
               <%= deal.escape('title') %>
             </a>
           </div>

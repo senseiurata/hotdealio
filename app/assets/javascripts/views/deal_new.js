@@ -34,6 +34,6 @@ window.Hotdealio.Views.DealNew = Backbone.View.extend({
       success: function () {
         Backbone.history.navigate("#/deals/" + that.model.get('id'));
       }
-    })
+    });
   }
 });
