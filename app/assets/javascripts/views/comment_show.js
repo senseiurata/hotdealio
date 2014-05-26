@@ -22,6 +22,7 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
   upvote: function (event) {
     event.stopImmediatePropagation();
 
+    var originalUserVoteValue = this.userVoteValue();
     var that = this;
 
     //fix later: refactor upvote/downvote
@@ -33,6 +34,9 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
 
         this.model.userVote.save({}, {
           success: function () {
+            var commentVoteText = that.updateVotes(originalUserVoteValue, 0);
+            $('.comment-' + that.model.get('id') + '-votes').html(commentVoteText);
+
             $('.comment-' + that.model.get('id') + '-upvote').removeClass('upvoted');
           }
         });
@@ -41,6 +45,9 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
 
         this.model.userVote.save({}, {
           success: function () {
+            var commentVoteText = that.updateVotes(originalUserVoteValue, 1);
+            $('.comment-' + that.model.get('id') + '-votes').html(commentVoteText);
+
             $('.comment-' + that.model.get('id') + '-upvote').addClass('upvoted');
             $('.comment-' + that.model.get('id') + '-downvote').removeClass('downvoted');
           }
@@ -51,6 +58,9 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
 
       this.model.userVote.save({}, {
         success: function () {
+          var commentVoteText = that.updateVotes(originalUserVoteValue, 1);
+          $('.comment-' + that.model.get('id') + '-votes').html(commentVoteText);
+
           $('.comment-' + that.model.get('id') + '-upvote').addClass('upvoted');
         }
       });
@@ -60,6 +70,7 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
   downvote: function (event) {
     event.stopImmediatePropagation();
 
+    var originalUserVoteValue = this.userVoteValue();
     var that = this;
 
     // if userVote has voted before
@@ -70,6 +81,9 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
 
         this.model.userVote.save({}, {
           success: function () {
+            var commentVoteText = that.updateVotes(originalUserVoteValue, 0);
+            $('.comment-' + that.model.get('id') + '-votes').html(commentVoteText);
+
             $('.comment-' + that.model.get('id') + '-downvote').removeClass('downvoted');
           }
         });
@@ -78,6 +92,9 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
 
         this.model.userVote.save({}, {
           success: function () {
+            var commentVoteText = that.updateVotes(originalUserVoteValue, -1);
+            $('.comment-' + that.model.get('id') + '-votes').html(commentVoteText);
+
             $('.comment-' + that.model.get('id') + '-upvote').removeClass('upvoted');
             $('.comment-' + that.model.get('id') + '-downvote').addClass('downvoted');
           }
@@ -88,6 +105,9 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
 
       this.model.userVote.save({}, {
         success: function () {
+          var commentVoteText = that.updateVotes(originalUserVoteValue, -1);
+          $('.comment-' + that.model.get('id') + '-votes').html(commentVoteText);
+
           $('.comment-' + that.model.get('id') + '-downvote').addClass('downvoted');
         }
       });
@@ -120,11 +140,13 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
   render: function () {
     var renderedContent = this.template({ comment: this.model })
 
+    //fix later: can use $el.find to grab user vote button classes
     this.$el.html(renderedContent);
 
     this.attachSubviews();
 
-    //this.changeVote();
+    //fix later: better way to get initial value of votes
+    this.commentVotes = this.model.get('votes');
 
     return this;
   },
@@ -135,6 +157,20 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
       votable_id: this.model.get('id'),
       value: value
     });
+  },
+
+  updateVotes: function (originalValue, voteValue) {
+    this.commentVotes += (voteValue - originalValue)
+
+    if (this.commentVotes > 0) { 
+      return "+" + this.commentVotes
+    } else {
+      return this.commentVotes.toString();
+    }
+  },
+
+  userVoteValue: function () {
+    return this.model.userVote.get('value') || 0
   },
 
   reply: function (value) {
@@ -153,7 +189,7 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
     comment.save({}, {
       success: function () {
         that.addComment(comment);
-        $('#comment_body').val("");
+        $('.comment_body').val("");
         $('.post-reply-modal-' + that.model.get('id')).modal('hide');
       }
     });

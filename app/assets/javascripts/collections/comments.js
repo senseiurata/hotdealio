@@ -7,5 +7,9 @@ window.Hotdealio.Collections.Comments = Backbone.Collection.extend({
   
   url: function () {
     return this.deal.url() + "/comments";
+  },
+
+  comparator: function (attr) {
+    return -attr.get('votes');
   }
 });

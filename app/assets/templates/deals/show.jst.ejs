@@ -2,7 +2,7 @@
   <h1><%= deal.escape('title') %></h1>
   <img src="<%= deal.escape('image_url') %>" class="deal-image">
   <p>
-    <span class="votes">
+    <span class="votes deal-votes">
       <% if (deal.get('votes') > 0) { %>+<% } %><%= deal.get('votes') %></span>
     <a href="<%= deal.escape('url') %>">
       <%= deal.escape('title') %>
@@ -22,7 +22,7 @@
 
 <h3>Comments</h3>
 
-<button class="btn btn-primary" data-toggle="modal" data-target=".post-deal-comment-modal">Comment on this deal!</button>
+<button class="btn btn-primary btn-open-post-comment-modal" data-toggle="modal">Comment on this deal!</button>
 
 <div class="modal fade post-deal-comment-modal" tabindex="-1" role="dialog" aria-labelledby="postCommentLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -33,11 +33,11 @@
       </div>
       <div class="modal-body clearfix">
       
-          <form class="form-horizonal col-xs-6 deal-post-comment" role="form">
-            <textarea name="comment[body]" placeholder="Comment on this Deal!" class="form-control comment-body"></textarea> 
+        <form class="form-horizonal col-xs-6 deal-post-comment" role="form">
+          <textarea name="comment[body]" placeholder="Comment on this Deal!" class="form-control deal-comment-body"></textarea> 
 
-            <input type="submit" class="btn btn-default">
-          </form>
+          <input type="submit" class="btn btn-default">
+        </form>
 
       </div>
 

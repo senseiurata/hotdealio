@@ -2,7 +2,7 @@
   <ul class="list-inline comments">
     <li>
       <!-- fix later: fix slight inefficiency -->
-      <span class="votes">
+      <span class="votes comment-<%= comment.get('id') %>-votes">
         <% if (comment.get('votes') > 0) { %>+<% } %><%= comment.get('votes') %></span>
     </li>
     <!-- fix later: make consistent with upvote/downvote deals -->
