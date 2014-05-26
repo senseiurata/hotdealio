@@ -1,5 +1,5 @@
 <div class="row">
-  <form class="form-horizonal col-xs-6 new-deal-form" role="form">
+  <form class="form-horizonal col-xs-8 new-deal-form" role="form">
     <div class="form-group">
       <label for="deal_url" class="col-xs-2 control-label">URL</label>
       <div class="col-xs-10">
@@ -25,16 +25,22 @@
       </div>    
     </div>
     <div class="form-group">
-      <label>Categories</label>
-      <% categories.each(function (category) { %>
-        <label for="deal_category_<%= category.escape('name') %>" class="control-label"><%= category.escape('name') %></label>
-          <input type="checkbox"
-            name="deal[category_ids][]"
-            id="deal_category_<%= category.escape('name') %>"
-            value="<%= category.get('id') %>">
-      <% }); %>
+      <label class="col-xs-2 control-label">Categories</label>
+      <div class="col-xs-10">
+        <% categories.each(function (category) { %>
+          <label for="deal_category_<%= category.escape('name') %>" class="control-label"><%= category.escape('name') %></label>
+            <input type="checkbox"
+              name="deal[category_ids][]"
+              id="deal_category_<%= category.escape('name') %>"
+              value="<%= category.get('id') %>">
+        <% }); %>
+      </div>
     </div>
 
-    <input type="submit" class="btn btn-default">
+    <div class="form-group">
+      <div class="col-xs-offset-2 col-xs-10">
+        <input type="submit" class="btn btn-default">
+      </div>
+    </div>
   </form>
 </div>

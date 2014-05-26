@@ -152,7 +152,6 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
 
     comment.save({}, {
       success: function () {
-        console.log(comment.get('id'))
         that.addComment(comment);
         $('#comment_body').val("");
         $('.post-reply-modal-' + that.model.get('id')).modal('hide');

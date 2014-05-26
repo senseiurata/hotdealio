@@ -36,10 +36,10 @@
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
               <h4 class="modal-title" id="replyLabel">Reply</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body clearfix">
 
                 <form class="form-horizonal col-xs-6 deal-post-comment" role="form">
-                  <textarea name="comment[body]" id="comment_body" placeholder='Reply to "<%= comment.escape('body') %>"' class="form-control"></textarea> 
+                  <textarea name="comment[body]" placeholder='Reply to "<%= comment.escape('body') %>"' class="form-control comment-body"></textarea> 
 
                   <input type="submit" class="btn btn-default">
                 </form>
