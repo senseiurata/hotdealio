@@ -103,13 +103,25 @@ a:hover {
 
 };
 
-.upvote, .downvote {
+.deal-upvote, .deal-downvote {
   background-color: $btn-blue;
   color: white;
   margin: 0 0;
 };
 
-.upvote:hover, .downvote:hover {
+.deal-upvote:hover, .deal-downvote:hover {
+  background-color: $btn-blue-hover;
+  color: white;
+  margin: 0 0;
+};
+
+.comment-upvote, .comment-downvote {
+  background-color: $btn-blue;
+  color: white;
+  margin: 0 0;
+};
+
+.comment-upvote:hover, .comment-downvote:hover {
   background-color: $btn-blue-hover;
   color: white;
   margin: 0 0;

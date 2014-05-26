@@ -24,10 +24,10 @@ module Api
       @deal = Deal.find(params[:id])
 
       user_votes = @deal.user_votes
-
       @current_user_vote = user_votes.where(user_id: current_user.id).first
 
-      render partial: "api/deals/show", locals: { deal: @deal, current_user_vote: @current_user_vote }
+#      render partial: "api/deals/show", locals: { deal: @deal, current_user_vote: @current_user_vote }
+      render partial: "api/deals/show", locals: { deal: @deal, current_user: current_user }
     end
 
     private

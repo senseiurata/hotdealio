@@ -1,7 +1,13 @@
 json.partial!("api/deals/deal", deal: deal)
-unless current_user_vote.nil?
+unless current_user.nil?
   json.userVote do
-    json.partial!("api/user_votes/user_vote", user_vote: current_user_vote)
+    current_user_vote = deal.user_votes.select do |user_vote|
+      user_vote.user_id == current_user.id
+    end
+
+    unless current_user_vote.empty?
+      json.partial!("api/user_votes/user_vote", user_vote: current_user_vote.first)
+    end
   end
 end
 # json.(deal, :comments)

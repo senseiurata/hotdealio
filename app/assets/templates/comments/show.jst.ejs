@@ -1,8 +1,26 @@
 <div>
   <ul class="list-inline comments">
-    <li><span class="votes"><%= comment.escape('votes') %><span></li>
-    <li><button class="btn btn-xs upvote">▴</button></li>
-    <li><button class="btn btn-xs downvote">▾</button>
+    <li>
+      <span class="votes">
+        <%= comment.escape('votes') %>
+      </span>
+    </li>
+    <!-- fix later: don't hard code class -->
+    <li>
+      <button class="btn btn-xs comment-upvote comment-<%= comment.get('id') %>-upvote
+        <% if (comment.userVote.get('value') === 1) { %>
+          upvoted
+        <% } %>
+      ">▴
+      </button>
+    </li>
+    <li>
+      <button class="btn btn-xs comment-downvote comment-<%= comment.get('id') %>-downvote
+        <% if (comment.userVote.get('value') === -1) { %>
+          downvoted
+        <% } %>
+      ">▾
+      </button>
     </li>
     <li>
       <%= comment.get('body') %>

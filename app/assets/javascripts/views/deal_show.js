@@ -2,8 +2,8 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
   template: JST['deals/show'],
 
   events: {
-    "click button.upvote": "upvote",
-    "click button.downvote": "downvote",
+    "click button.deal-upvote": "upvote",
+    "click button.deal-downvote": "downvote",
   },
 
   initialize: function () {
@@ -19,11 +19,11 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
 
     this.$el.html(renderedContent);
 
-    if (this.model.userVote) {
+    if (!_.isEmpty(this.model.userVote)) {
       if (this.model.userVote.get('value') === 1) {
-        $('.upvote').addClass('upvoted');
+        $('.deal-upvote').addClass('upvoted');
       } else if (this.model.userVote.get('value') === -1) {
-        $('.downvote').addClass('downvoted');
+        $('.deal-downvote').addClass('downvoted');
       }
     }
 
@@ -33,12 +33,25 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
   },
 
   addComment: function (comment) {
-    comment.comments().set(comment.get('comments'));
+    var models = [];
+    var comments = comment.get('comments')
 
-    //console.log(comment.comments())
+    var that = this;
+
+    _.each(comments, function (comment) {
+      models.push(new Hotdealio.Models.Comment(comment, {
+        deal: that.model,
+        userVote: comment.userVote
+      }))
+    });
+
+    comment.comments().set(models, { parse: true });
+
+    //comment.comments().set(comment.get('comments'));
 
     var commentShowView = new Hotdealio.Views.CommentShow({
-      model: comment
+      model: comment,
+      deal: this.model
     });
   
     this.addSubview("ul.comment-items", commentShowView);
@@ -66,7 +79,7 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
 
         this.model.userVote.save({}, {
           success: function () {
-            $('.upvote').removeClass('upvoted');
+            $('.deal-upvote').removeClass('upvoted');
           }
         });
       } else { //otherwise, upvote
@@ -74,8 +87,8 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
 
         this.model.userVote.save({}, {
           success: function () {
-            $('.upvote').addClass('upvoted');
-            $('.downvote').removeClass('downvoted');
+            $('.deal-upvote').addClass('upvoted');
+            $('.deal-downvote').removeClass('downvoted');
           }
         });        
       }
@@ -84,7 +97,7 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
 
       this.model.userVote.save({}, {
         success: function () {
-          $('.upvote').addClass('upvoted');
+          $('.deal-upvote').addClass('upvoted');
         }
       });
     }
@@ -101,7 +114,7 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
 
         this.model.userVote.save({}, {
           success: function () {
-            $('.downvoted').removeClass('downvoted');
+            $('.deal-downvote').removeClass('downvoted');
           }
         });
       } else { //otherwise, downvote
@@ -109,8 +122,8 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
 
         this.model.userVote.save({}, {
           success: function () {
-            $('.downvote').addClass('downvoted');
-            $('.upvote').removeClass('upvoted');
+            $('.deal-downvote').addClass('downvoted');
+            $('.deal-upvote').removeClass('upvoted');
           }
         });
       }
@@ -119,7 +132,7 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
 
       this.model.userVote.save({}, {
         success: function () {
-          $('.downvote').addClass('downvoted');
+          $('.deal-downvote').addClass('downvoted');
         }
       });
     }
