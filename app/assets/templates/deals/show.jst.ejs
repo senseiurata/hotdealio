@@ -1,27 +1,26 @@
 <div class="container panel panel-default">
   <h1><%= deal.escape('title') %></h1>
   <img src="<%= deal.escape('image_url') %>" class="deal-image">
-  <p>
-    <span class="votes deal-votes">
-      <% if (deal.get('votes') > 0) { %>+<% } %><%= deal.get('votes') %></span>
-    <a href="<%= deal.escape('url') %>">
-      <%= deal.escape('title') %>
-    </a>
-  </p>
+  <div>
+    <div class="btn-group-vertical">
+      <button class="btn btn-vote deal-upvote"><span class="glyphicon glyphicon-circle-arrow-up"></span></button>
+      <button class="btn btn-vote deal-downvote"><span class="glyphicon glyphicon-circle-arrow-down"></span></button>
+    </div>
+      <span class="votes-text deal-votes">
+        <% if (deal.get('votes') > 0) { %>+<% } %><%= deal.get('votes') %></span>
+      <a href="<%= deal.escape('url') %>">
+        <%= deal.escape('title') %>
+      </a>
+  </div>
   <p><%= deal.escape('description') %></p>
   <p>Categories:
     <% deal.categories().each(function (category) { %>
       <%= category.escape('name') %>
     <% }); %>
   </p>
-
-<button class="btn-vote deal-upvote"><span class="glyphicon glyphicon-circle-arrow-up"></span></button>
-<button class="btn-vote deal-downvote"><span class="glyphicon glyphicon-circle-arrow-down"></span></button>
-
 </div>
 
 <h3>Comments</h3>
-
 <button class="btn btn-primary btn-open-post-comment-modal" data-toggle="modal"><span class="glyphicon glyphicon-comment"></span> &nbsp;Comment on this deal!</button>
 
 <div class="modal fade post-deal-comment-modal" tabindex="-1" role="dialog" aria-labelledby="postCommentLabel" aria-hidden="true">
@@ -45,6 +44,6 @@
   </div>
 </div>
 
-<div class="container">
+<div>
   <ul class="comment-items"></ul>
 </div>

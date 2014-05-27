@@ -25,10 +25,15 @@ $a-dark-purple-hover: #464686;
 $btn-blue: #4286c1;
 $btn-blue-hover: #5296d1;
 $pill-dark-purple: #464686;
+$btn-light: #e7e7ff;
+$btn-light-hover: #464686;
 
 $text-header: #161656;
 
 $text-votes: #464686;
+
+$comment-left-border-barely-purple: #e7e7ff;
+
 
 //navbar stuff
 .navbar {
@@ -112,11 +117,17 @@ a:hover {
 
 .btn-post-new-deal {
   margin: 30px;
+  background-color: $btn-dark-purple;
+};
+
+.btn-post-new-deal:hover {
+  margin: 30px;
+  background-color: $btn-dark-purple-hover;
 };
 
 .deal-row-container {
   border-top: 1px solid #DDD;
-  padding-top: 5px;
+  left: 30px;
 };
 
 .deal-image-front-page {
@@ -133,30 +144,39 @@ a:hover {
   border: 0;
   border-radius: 50%;
   padding: 0 0 0 0;
-  font-size: 20px;
-}
+  font-size: 16px;
+};
+
+.btn-vote:focus {
+  outline: none;
+};
+
+.deal-votes {
+  margin: 5px 0;
+};
 
 .deal-upvote, .deal-downvote {
   background-color: white;
-  color: $btn-blue;
+  color: $btn-light;
   margin: 0 0;
 };
 
+
 .deal-upvote:hover, .deal-downvote:hover {
   background-color: white;
-  color: $btn-blue-hover;
+  color: $btn-light-hover;
   margin: 0 0;
 };
 
 .comment-upvote, .comment-downvote {
   background-color: white;
-  color: $btn-blue;
+  color: $btn-light;
   margin: 0 0;
 };
 
 .comment-upvote:hover, .comment-downvote:hover {
   background-color: white;
-  color: $btn-blue-hover;
+  color: $btn-light-hover;
   margin: 0 0;
 };
 
@@ -179,8 +199,8 @@ a:hover {
 }
 
 .downvoted:hover {
-  background-color: $btn-dark-purple-hover;
-  color: white;
+  background-color: white;
+  color: $btn-dark-purple-hover;
   margin: 0 0;
 }
 
@@ -189,17 +209,40 @@ ul {
 //  margin: 5px 0;
 };
 
-.votes {
+.votes-text {
   background-color: $text-votes;
   color: white;
   font-weight: bold;
   padding: 4px 5px 2px 6px;
-  border-radius: 3px;
-  margin-right: 5px;
-  font-size: 18px;
+  border-radius: 5px;
+  font-size: 14px;
 };
+
+.deal-votes-container {
+  margin: 5px;
+}
+
+.comment-container {
+  margin: 3px 0;
+  border-left-color: $comment-left-border-barely-purple;
+  border-left-style: solid;
+  padding-left: 5px;
+}
+
+.comment-body-container {
+  display: inline-block;
+
+}
 
 .comment-body {
   width: 800px;
   //height: 200px;
+};
+
+.comment-items {
+  padding: 10px 0 10px 20px;
+};
+
+.comment-items > ul {
+  padding: 10px 0 10px 10px;
 };
