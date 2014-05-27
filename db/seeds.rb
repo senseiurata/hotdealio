@@ -246,7 +246,7 @@ The adjustable nose pads provide you with a comfortable, customizable fit while 
 <p>&nbsp;</p>
 ', submitter_id: 2, category_ids: [7]})
 
-(1..1000).times do |id|
+(1..1000).each do |id|
   User.create(username: "sensei#{id}", password: "sensei")
 end
 
@@ -254,6 +254,6 @@ users = User.all
 deals = Deal.all
 values = [-1, 0, 1]
 
-(1..1000).times do
+1000.times do
   UserVote.create(user_id: users.sample.id, votable_id: deals.sample.id, votable_type: "Deal", value: value.samples)
 end
