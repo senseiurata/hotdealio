@@ -252,8 +252,15 @@ end
 
 users = User.all
 deals = Deal.all
-values = [-1, 1, 1, 1]
+
+popular_deal_id = []
+
+100.times do
+  popular_deal_id << deals.sample.id
+end
+
+values = [-1, 1]
 
 1000.times do
-  UserVote.create(user_id: users.sample.id, votable_id: deals.sample.id, votable_type: "Deal", value: values.sample)
+  UserVote.create(user_id: users.sample.id, votable_id: popular_deal_id.sample, votable_type: "Deal", value: values.sample)
 end
