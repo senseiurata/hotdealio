@@ -38,7 +38,7 @@ Deal.create({ url: 'http://sport.woot.com/offers/teeter-hang-ups-spinal-stretch-
 <p><strong>Warranty:</strong> 1 Year Teeter Hang Ups</p>
 
 <p>&nbsp;</p>
-'})
+', submitter_id: 2})
 Deal.create({ url: 'http://sport.woot.com/offers/sun-screen-bundle-2?utm_source=version2&utm_medium=json&utm_campaign=api.woot.com', title: 'Aloe Gator Sun Care', image_url: 'http://d3gqasl9vmjfd8.cloudfront.net/f2b9efb3-1249-40c2-892f-8975d7d0b001.jpg', description: '<p><u><strong>Aloe Gator Total Sunblock Lotion</strong></u></p>
 
 <p>Aloe Gator SPF 40 lotion is total protection that last 8 hours.&nbsp; Not matter how much you are in the water or how much you perspire, you are protected.</p>
@@ -76,7 +76,7 @@ Deal.create({ url: 'http://sport.woot.com/offers/sun-screen-bundle-2?utm_source=
 </ul>
 
 <p><b>Shipping Note:</b> Eligible for shipping to all 50 states</p>
-'})
+', submitter_id: 2})
 Deal.create({ url: 'http://sport.woot.com/offers/astravar-stack-and-ignite-90ct-2?utm_source=version2&utm_medium=json&utm_campaign=api.woot.com', title: 'Top Secret Nutritional Supplements', image_url: 'http://d3gqasl9vmjfd8.cloudfront.net/bd3f14e8-2844-485d-9e02-6e5e60c5b274.jpg', description: '<iframe allowfullscreen="" frameborder="0" height="209" src="//www.youtube.com/embed/bo_pvlpy8Fk" width="370"></iframe>
 
 <p>&nbsp;</p>
@@ -118,7 +118,7 @@ Take one (1) capsule to improve the effectiveness of any high quality pre-workou
 <p><b>Shipping Note:</b> Eligible for shipping to all 50 states</p>
 
 <p>&nbsp;</p>
-'})
+', submitter_id: 2})
 Deal.create({ url: 'http://sport.woot.com/offers/lifespan-mystride-activity-tracker-7?utm_source=version2&utm_medium=json&utm_campaign=api.woot.com', title: 'There\'s only one thing in here!', image_url: 'http://d3gqasl9vmjfd8.cloudfront.net/27c5f371-0265-4e72-8aac-73b5d5d7f5f1.jpg', description: '<p>The MyStride Activity Tracker is more than just a pedometer. It uses a three-axis accelerometer to measure your movement to more accurately track steps taken, calories burned, minutes exercised and distance traveled. The integrated flip USB makes it easy and convenient to sync your activity progress with your LifeSpan Fitness Club account (not included).</p>
 
 <ul>
@@ -144,7 +144,7 @@ MyStride fits in your pocket or clips on to your apparel. Keep it with you all d
 <p><b>Shipping Note:</b> Shipping to Alaska and Hawaii is not available for this item</p>
 
 <p><strong>Warranty:</strong> <a href="/warranty" target="_blank">90 Day Woot Limited Warranty</a></p>
-'})
+', submitter_id: 2})
 Deal.create({ url: 'http://sport.woot.com/offers/treasure-hunter-1000-metal-detector?utm_source=version2&utm_medium=json&utm_campaign=api.woot.com', title: 'Pyle Metal Detectors and Night Vision', image_url: 'http://d3gqasl9vmjfd8.cloudfront.net/cf2aee8c-2520-4ac9-a235-254565290018.jpg', description: '<p>The Pyle Treasure Hunter Metal Detector will help you uncover lost valuables. Find precious metals, artifacts and more with this fully featured metal detector. Features include waterproof and submergible search coils, headphone jack, high-sensitivity operation mode with auto tuning, mounted view meter control box and more. Compact, light-weight and easy-to-use.</p>
 
 <ul>
@@ -169,7 +169,7 @@ Deal.create({ url: 'http://sport.woot.com/offers/treasure-hunter-1000-metal-dete
 <p><strong>Warranty: </strong>1 Year Pyle</p>
 
 <p>&nbsp;</p>
-'})
+', submitter_id: 2})
 Deal.create({ url: 'http://sport.woot.com/offers/rebel-15-grey-yellow-3?utm_source=version2&utm_medium=json&utm_campaign=api.woot.com', title: 'OGIO Backpacks', image_url: 'http://d3gqasl9vmjfd8.cloudfront.net/558f1ca8-b1a6-45c6-beaf-e20f8e44492a.jpg', description: '<ul>
   <li>Padded, fleece lined interior laptop compartment fits most 15” laptops</li>
   <li>Integrated foam panels keep your electronics and other valuable protected</li>
@@ -190,7 +190,7 @@ Deal.create({ url: 'http://sport.woot.com/offers/rebel-15-grey-yellow-3?utm_sour
 <p>&nbsp;</p>
 
 <p>&nbsp;</p>
-'})
+', submitter_id: 2})
 Deal.create({ url: 'http://sport.woot.com/offers/cleveland-lady-bloom-full-golf-set-rh?utm_source=version2&utm_medium=json&utm_campaign=api.woot.com', title: 'Cleveland Lady Bloom Golf Set', image_url: 'http://d3gqasl9vmjfd8.cloudfront.net/d66b9cf7-3a14-4e16-ad05-c211810ca7d0.jpg', description: '<p>The 14-piece ultra-premium Bloom package set from Cleveland Golf provides her with all of the tools she needs to get on the course and improve her game.</p>
 
 <p><strong>RIGHT-HANDED</strong></p>
@@ -210,7 +210,7 @@ Deal.create({ url: 'http://sport.woot.com/offers/cleveland-lady-bloom-full-golf-
 <p><b>Warranty:</b> <a href="/warranty" target="_blank">90 Day Woot Limited Warranty</a></p>
 
 <p>&nbsp;</p>
-'})
+', submitter_id: 2})
 Deal.create({ url: 'http://sport.woot.com/offers/nova-maple-tort-brown-lens-1?utm_source=version2&utm_medium=json&utm_campaign=api.woot.com', title: 'Native Eyewear Polarized Sunglasses', image_url: 'http://d3gqasl9vmjfd8.cloudfront.net/f1b16af3-d0f7-4b5c-8c4c-2991ab53eb34.jpg', description: '<p>Since 1997, Native Eyewear has been making sunglasses for the most hardcore outdoor athlete. Their sunglasses are designed to have a close, secure fit so you can ski, climb, bike, or throw yourself out of an airplane with confidence they\'ll stay put.</p>
 
 <p><strong>Best fits a medium-large profile</strong></p>
@@ -244,4 +244,4 @@ The adjustable nose pads provide you with a comfortable, customizable fit while 
 <p><strong>Warranty: </strong>Lifetime Native Eyewear</p>
 
 <p>&nbsp;</p>
-'}) 
+', submitter_id: 2}) 
