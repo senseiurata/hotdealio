@@ -1,10 +1,13 @@
 module Api
   class DealsController < ApiController
+    before_action :ensure_logged_in!, only: [:create]
+
     def create
       @deal = current_user.deals.new(deal_params)
 
       #fix later: refactor
       user_votes = @deal.user_votes
+
       @current_user_vote = user_votes.where(user_id: current_user.id).first
 
       if @deal.save
@@ -24,7 +27,10 @@ module Api
       @deal = Deal.find(params[:id])
 
       user_votes = @deal.user_votes
-      @current_user_vote = user_votes.where(user_id: current_user.id).first
+
+      if current_user
+        @current_user_vote = user_votes.where(user_id: current_user.id).first
+      end
 
 #      render partial: "api/deals/show", locals: { deal: @deal, current_user_vote: @current_user_vote }
       render partial: "api/deals/show", locals: { deal: @deal, current_user: current_user }

@@ -259,7 +259,7 @@ popular_deal_id = []
   popular_deal_id << deals.sample.id
 end
 
-values = [-1, 1]
+values = [-1, 1, 1]
 
 1000.times do
   UserVote.create(user_id: users.sample.id, votable_id: popular_deal_id.sample, votable_type: "Deal", value: values.sample)

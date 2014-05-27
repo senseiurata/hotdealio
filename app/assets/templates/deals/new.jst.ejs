@@ -28,11 +28,11 @@
       <label class="col-xs-2 control-label">Categories</label>
       <div class="col-xs-10">
         <% categories.each(function (category) { %>
+          <input type="checkbox"
+            name="deal[category_ids][]"
+            id="deal_category_<%= category.escape('name') %>"
+            value="<%= category.get('id') %>">
           <label for="deal_category_<%= category.escape('name') %>" class="control-label"><%= category.escape('name') %></label>
-            <input type="checkbox"
-              name="deal[category_ids][]"
-              id="deal_category_<%= category.escape('name') %>"
-              value="<%= category.get('id') %>">
         <% }); %>
       </div>
     </div>

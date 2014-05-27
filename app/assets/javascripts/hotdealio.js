@@ -7,6 +7,7 @@ window.Hotdealio = {
     this.$navbarContent = $('#navbar-content');
     this.$content = $('#content');
     this.categories = new Hotdealio.Collections.Categories();
+    this.user = new Hotdealio.Models.User();
 
     var navbarView = new Hotdealio.Views.CategoriesIndex({
       router: new Hotdealio.Routers.AppRouter(),

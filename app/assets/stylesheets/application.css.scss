@@ -32,7 +32,8 @@ $text-header: #161656;
 
 $text-votes: #464686;
 
-$comment-left-border-barely-purple: #e7e7ff;
+$comment-left-border: #e7e7ff;
+$comment-left-border-hover: #464686;
 
 
 //navbar stuff
@@ -100,6 +101,7 @@ a:hover {
 
 .category-items {
   margin: 20px 20px 10px 20px;
+  width: 508px;
 };
 
 .pill-item {
@@ -110,18 +112,20 @@ a:hover {
   margin: auto;
 };
 
-.logo {
+.logo-container {
+  margin: 10px 10px 0 10px;
+  padding: 0;
   width: 339px;
   height: 73px;
-};
+}
 
 .btn-post-new-deal {
-  margin: 30px;
+  margin: 30px 30px 20px 30px;
   background-color: $btn-dark-purple;
 };
 
 .btn-post-new-deal:hover {
-  margin: 30px;
+  margin: 30px 30px 20px 30px;
   background-color: $btn-dark-purple-hover;
 };
 
@@ -136,6 +140,10 @@ a:hover {
 };
 
 //deal show page stuff
+.deal-show-container {
+  padding: 0 20px 20px 20px;
+}
+
 .deal-image {
   margin: 3px;
 };
@@ -224,14 +232,18 @@ ul {
 
 .comment-container {
   margin: 3px 0;
-  border-left-color: $comment-left-border-barely-purple;
+  border-left-color: $comment-left-border;
   border-left-style: solid;
   padding-left: 5px;
 }
 
 .comment-body-container {
   display: inline-block;
+  white-space: pre-wrap;
+}
 
+.comment-body-container:hover {
+  border-left-color: $comment-left-border-hover;
 }
 
 .comment-body {
@@ -246,3 +258,17 @@ ul {
 .comment-items > ul {
   padding: 10px 0 10px 10px;
 };
+
+.vote-area-container {
+  width: 50px;
+}
+
+
+//fix later:
+.btn-primary {
+  border: none;
+  background-color: $btn-dark-purple;
+}
+.btn-primary:hover {
+  background-color: $btn-dark-purple-hover;
+}
