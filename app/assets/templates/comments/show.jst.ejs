@@ -7,19 +7,19 @@
     </li>
     <!-- fix later: make consistent with upvote/downvote deals -->
     <li>
-      <button class="btn btn-xs comment-upvote comment-<%= comment.get('id') %>-upvote
+      <button class="btn-vote comment-upvote comment-<%= comment.get('id') %>-upvote
         <% if (comment.userVote.get('value') === 1) { %>
           upvoted
         <% } %>
-      ">▴
+      "><span class="glyphicon glyphicon-circle-arrow-up"></span>
       </button>
     </li>
     <li>
-      <button class="btn btn-xs comment-downvote comment-<%= comment.get('id') %>-downvote
+      <button class="btn-vote comment-downvote comment-<%= comment.get('id') %>-downvote
         <% if (comment.userVote.get('value') === -1) { %>
           downvoted
         <% } %>
-      ">▾
+      "><span class="glyphicon glyphicon-circle-arrow-down"></span>
       </button>
     </li>
     <li>

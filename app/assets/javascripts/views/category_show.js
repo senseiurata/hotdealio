@@ -5,6 +5,7 @@ window.Hotdealio.Views.CategoryShow = Backbone.CompositeView.extend({
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.deals(), "add", this.addDeal);
     this.listenTo(this.model.deals(), "remove", this.removeDeal);
+
   },
 
   render: function () {
@@ -12,6 +13,8 @@ window.Hotdealio.Views.CategoryShow = Backbone.CompositeView.extend({
 
     this.$el.html(renderedContent);
     this.attachSubviews();
+
+    $('.pill-' + this.model.escape('name').toLowerCase()).addClass('active')
 
     return this;
   },

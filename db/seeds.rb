@@ -11,7 +11,11 @@ Category.create({ name: "Apparel" })
 Category.create({ name: "Food" })
 Category.create({ name: "Games" })
 Category.create({ name: "Home" })
-Category.create({ name: "Shoes" })
+Category.create({ name: "Money" })
+Category.create({ name: "Sports" })
+Category.create({ name: "Services" })
+Category.create({ name: "Kids" })
+Category.create({ name: "Other" })
 
 Deal.create({
 

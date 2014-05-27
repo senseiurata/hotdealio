@@ -13,6 +13,8 @@ window.Hotdealio.Views.CategoriesIndex = Backbone.View.extend({
   },
 
   render: function () {
+    console.log("rendered!")
+
     var renderedContent = this.template({ categories: this.collection });
 
     this.$el.html(renderedContent);

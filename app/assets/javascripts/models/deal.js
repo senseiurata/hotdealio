@@ -30,9 +30,12 @@ window.Hotdealio.Models.Deal = Backbone.Model.extend({
     }
     if (payload.comments) {
 
-      //var models = [];
       var that = this;
 
+      //fix later: need to pre-sort payload.comments right now because
+      // each add to the collection triggers addComment,
+      // which would attach the comment view out of order for
+      // top level comments.
       var sortedComments = _.sortBy(payload.comments, function(comment) {
         return -comment.votes;
       });

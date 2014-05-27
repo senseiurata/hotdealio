@@ -6,17 +6,27 @@
         </a>
       </li>
       <li>
-      <nav class="navbar navbar-default category-items" role="navigation">
-        <ul class="nav navbar-default navbar-nav">
-        <% categories.each(function (category) { %>
-          <li>
-            <a href="/#/<%= category.get('id') %>">
-              <%= category.escape('name') %>
-            </a>
-          </li>
-        <% }); %>
+        <div class="category-items">
+        <% var categoryCount = 1; %>
+        <ul class="nav nav-pills">
+          <% categories.each(function (category) { %>
+            <li class="pill-item pill-<%= category.escape('name').toLowerCase() %>">
+              <a href="/#/<%= category.get('id') %>">
+                <%= category.escape('name') %>
+              </a>
+            </li>
+
+            <% if (categoryCount === Math.floor(_.size(categories) / 2)) { %>
+
         </ul>
-      </nav>
+        <ul class="nav nav-pills">
+
+            <% } %>
+
+            <% categoryCount++; %>
+          <% }); %>
+        </ul>
+        </div>
       </li>
     </ul>
     <div class="pull-right">

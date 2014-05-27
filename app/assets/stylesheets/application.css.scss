@@ -24,6 +24,9 @@ $a-dark-purple: #464686;
 $a-dark-purple-hover: #464686;
 $btn-blue: #4286c1;
 $btn-blue-hover: #5296d1;
+$pill-dark-purple: #464686;
+
+$text-header: #161656;
 
 $text-votes: #464686;
 
@@ -65,6 +68,22 @@ $text-votes: #464686;
   font-weight: bold;
 };
 
+.category-pills {
+
+};
+
+.nav-pills > li > a {
+  text-align: center;  
+  font-weight: bold;
+  padding: 4px 0;
+  margin: 2px 4px;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  background-color: $pill-dark-purple;
+  text-align: center;
+}
+
 //anchor tag stuff
 a {
   color: $a-dark-purple;
@@ -75,7 +94,15 @@ a:hover {
 };
 
 .category-items {
-  margin-top: 25px;
+  margin: 20px 20px 10px 20px;
+};
+
+.pill-item {
+  width: 100px;
+};
+
+.pill-item > a {
+  margin: auto;
 };
 
 .logo {
@@ -97,51 +124,57 @@ a:hover {
   width: 150px;
 };
 
-//deal show page
+//deal show page stuff
 .deal-image {
   margin: 3px;
-
 };
 
+.btn-vote, .btn-vote:hover {
+  border: 0;
+  border-radius: 50%;
+  padding: 0 0 0 0;
+  font-size: 20px;
+}
+
 .deal-upvote, .deal-downvote {
-  background-color: $btn-blue;
-  color: white;
+  background-color: white;
+  color: $btn-blue;
   margin: 0 0;
 };
 
 .deal-upvote:hover, .deal-downvote:hover {
-  background-color: $btn-blue-hover;
-  color: white;
+  background-color: white;
+  color: $btn-blue-hover;
   margin: 0 0;
 };
 
 .comment-upvote, .comment-downvote {
-  background-color: $btn-blue;
-  color: white;
+  background-color: white;
+  color: $btn-blue;
   margin: 0 0;
 };
 
 .comment-upvote:hover, .comment-downvote:hover {
-  background-color: $btn-blue-hover;
-  color: white;
+  background-color: white;
+  color: $btn-blue-hover;
   margin: 0 0;
 };
 
 .upvoted {
-  background-color: $btn-dark-purple;
-  color: white;
+  background-color: white;
+  color: $btn-dark-purple;
   margin: 0 0;  
 }
 
 .upvoted:hover {
-  background-color: $btn-dark-purple-hover;
-  color: white;
+  background-color: white;
+  color: $btn-dark-purple-hover;
   margin: 0 0;
 }
 
 .downvoted {
-  background-color: $btn-dark-purple;
-  color: white;
+  background-color: white;
+  color: $btn-dark-purple;
   margin: 0 0;  
 }
 
@@ -151,22 +184,19 @@ a:hover {
   margin: 0 0;
 }
 
-ul.comments {
+ul {
   list-style-type: none;
-  margin: 5px 0;
-};
-
-ul.comments > li {
-  padding: 0;
+//  margin: 5px 0;
 };
 
 .votes {
   background-color: $text-votes;
   color: white;
   font-weight: bold;
-  padding: 2px 3px 2px 4px;
+  padding: 4px 5px 2px 6px;
   border-radius: 3px;
   margin-right: 5px;
+  font-size: 18px;
 };
 
 .comment-body {
