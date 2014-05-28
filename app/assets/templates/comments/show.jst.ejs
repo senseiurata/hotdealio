@@ -1,13 +1,14 @@
-<div class="comment-container">
-    <!-- fix later: make consistent with upvote/downvote deals -->
+<div class="media comment-container">
+  <!-- fix later: make consistent with upvote/downvote deals -->
+  <div class="pull-left">
     <div class="btn-group-vertical">
-      <button class="btn-vote comment-upvote comment-<%= comment.get('id') %>-upvote
+      <button class="btn btn-vote comment-upvote comment-<%= comment.get('id') %>-upvote
         <% if (comment.userVote.get('value') === 1) { %>
           upvoted
         <% } %>
       "><span class="glyphicon glyphicon-circle-arrow-up"></span>
       </button>
-      <button class="btn-vote comment-downvote comment-<%= comment.get('id') %>-downvote
+      <button class="btn btn-vote comment-downvote comment-<%= comment.get('id') %>-downvote
         <% if (comment.userVote.get('value') === -1) { %>
           downvoted
         <% } %>
@@ -17,11 +18,15 @@
     <!-- fix later: fix slight inefficiency -->
     <span class="votes-text comment-<%= comment.get('id') %>-votes">
       <% if (comment.get('votes') > 0) { %>+<% } %><%= comment.get('votes') %></span>
-    <div class="comment-body-container">
-      <%= comment.escape('body') %>
-    </div>
-    <button class="btn btn-primary btn-xs btn-comment-reply" data-toggle="modal" data-target=".post-reply-modal-<%= comment.get('id') %>">Reply</button>
+  </div>
 
+    <div class="media-body comment-body-container">
+      <p><%= comment.escape('body') %></p>
+      <span class="comment-author-text">Comment by: <%= comment.escape('username') %></span>
+      <button class="btn btn-primary btn-xs btn-comment-reply" data-toggle="modal" data-target=".post-reply-modal-<%= comment.get('id') %>">Reply</button>
+    </div>
+
+    <!-- fix later: fix to shared modal -->
     <div class="modal fade post-reply-modal-<%= comment.get('id') %>" tabindex="-1" role="dialog" aria-labelledby="replyLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">

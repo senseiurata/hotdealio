@@ -37,6 +37,12 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
 
     this.attachSubviews();
 
+    this.$el.find('.comment-container').hover(function () {
+      $(this).find(".btn-comment-reply").show();
+    }, function () {
+      $(this).find(".btn-comment-reply").hide();
+    });
+
     return this;
   },
 
@@ -137,7 +143,7 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
           success: function () {
             var dealVoteText = that.updateVotes(originalUserVoteValue, 0);
             $('.deal-votes').html(dealVoteText);
-
+comment-author-text
             $('.deal-downvote').removeClass('downvoted');
           }
         });
@@ -161,7 +167,7 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
         success: function () {
           var dealVoteText = that.updateVotes(originalUserVoteValue, -1);
           $('.deal-votes').html(dealVoteText);
-
+comment-author-text
           $('.deal-downvote').addClass('downvoted');
         }
       });
@@ -223,7 +229,7 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
     event.preventDefault();
 
     if (Hotdealio.currentUserId === this.model.get('submitter_id')) {
-      Backbone.history.navigate("#/deals/" + this.model.get('id') + "/edit");
+      Backbone.history.navigate("#/deals/" + this.model.get('id') + "/edit", { trigger: true });
     } else {
       $('#myModal').modal('show');
     }    
@@ -234,7 +240,7 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
 
     this.model.destroy({
       success: function () {
-        Backbone.history.navigate("#");
+        Backbone.history.navigate("#", { trigger: true });
       }
     });
   }

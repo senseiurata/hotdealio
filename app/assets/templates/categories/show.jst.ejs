@@ -1,13 +1,14 @@
 <h1><%= category.escape('name') %></h1>
 
 <div>
-  <div class="row">
-    <div class="row">
-      <div class="col-xs-8 deal-row-container">
+  <div class="deal-rows-all">
+    <% var dealCount = 0; %>
+    
+    <div class="deal-row-container">
         <% category.deals().each(function (deal, index) { %>
           <div class="col-xs-3">
             <a href="/#/deals/<%= deal.get('id') %>">
-              <img src="<%= deal.escape('image_url') %>" class="deal-image-front-page">
+              <img src="<%= deal.escape('image_url') %>" class="deal-tile-image">
             </a>
             <span class="votes-text">
               <% if (deal.get('votes') > 0) { %>+<% } %><%= deal.get('votes') %></span>

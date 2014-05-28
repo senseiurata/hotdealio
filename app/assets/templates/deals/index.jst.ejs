@@ -1,25 +1,35 @@
 <h1>All Deals</h1>
 
 <div>
-  <div class="row">
-    <div class="row">
-      <div class="col-xs-8 deal-row-container">
-        <% deals.each(function (deal, index) { %>
-          <div class="col-xs-3">
-            <a href="/#/deals/<%= deal.get('id') %>">
-              <img src="<%= deal.escape('image_url') %>" class="deal-image-front-page">
-            </a>
-            <span class="votes-text">
-              <% if (deal.get('votes') > 0) { %>+<% } %><%= deal.get('votes') %></span>
-            <a href="/#/deals/<%= deal.get('id') %>">
-              <%= deal.escape('title') %>
-            </a>
-          </div>
-        <% }); %>
-      </div>
-      <div class="col-xs-4 deal-recent-container">
+  <div class="deal-rows-all">
 
-      </div>
+    <% var dealCount = 0; %>
+    
+    <div class="deal-row-container">
+      <% deals.each(function (deal, index) { %>
+        <div class="col-xs-3">
+          <a href="/#/deals/<%= deal.get('id') %>">
+            <img src="<%= deal.escape('image_url') %>" class="deal-tile-image">
+          </a>
+          <span class="votes-text">
+            <% if (deal.get('votes') > 0) { %>+<% } %><%= deal.get('votes') %></span>
+          <a href="/#/deals/<%= deal.get('id') %>">
+            <%= deal.escape('title') %>
+          </a>
+        </div>
+
+        <% if (dealCount % 4 === 3) { %>
+
     </div>
+    <div class="deal-row-container pull-right">
+
+        <% } %>
+        <% dealCount++ %>
+
+      <% }); %>
+    </div>
+  </div>
+  <div class="deal-recent-container">
+
   </div>
 </div>

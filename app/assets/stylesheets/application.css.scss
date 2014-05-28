@@ -32,6 +32,7 @@ $text-header: #161656;
 
 $text-votes: #464686;
 
+$comment-container-hover: #fcfcfc;
 $comment-left-border: #e7e7ff;
 $comment-left-border-hover: #464686;
 
@@ -130,15 +131,37 @@ a:hover {
   margin: 30px 30px 20px 30px;
 };
 
-.deal-row-container {
+//deal index page stuff
+
+.deal-rows-all {
   border-top: 1px solid #DDD;
-  left: 30px;
+  width: 800px;
+  padding-top: 5px;
+  padding-right: 0;
 };
 
-.deal-image-front-page {
+.deal-row-container {
+  width: 800px;
+  margin-bottom: 5px;
+};
+
+.deal-tile-container {
+  width: 170px;
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  float: left;
+}
+
+.deal-tile-image {
   margin: 10px 0;
   width: 150px;
 };
+
+.deal-recent-container {
+  width: 300px;
+}
 
 //deal show page stuff
 .deal-show-container {
@@ -239,7 +262,7 @@ ul {
 }
 
 .comment-container {
-  margin: 3px 0;
+  margin: 7px 0;
   border-left-color: $comment-left-border;
   border-left-style: solid;
   padding-left: 5px;
@@ -247,11 +270,12 @@ ul {
 
 .comment-body-container {
   display: inline-block;
-  white-space: pre-wrap;
+  //white-space: pre-wrap;
 }
 
 .comment-container:hover {
   border-left-color: $comment-left-border-hover;
+  background-color: $comment-container-hover;
 }
 
 .comment-body {
@@ -269,7 +293,12 @@ ul {
 
 .btn-comment-reply {
   display: none;
+  margin-left: 10px;
 }
+
+.comment-author-text {
+  font-size: 10px;
+};
 
 .vote-area-container {
   width: 50px;

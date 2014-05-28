@@ -1,4 +1,5 @@
 json.(comment, :id, :body, :parent_comment_id, :deal_id, :user_id, :votes, :created_at, :updated_at)
+json.(comment.user, :username)
 
 unless current_user.nil?
   json.userVote do
