@@ -13,9 +13,9 @@ class UsersController < ApplicationController
 
       redirect_to "/#"
     else
-      flash.now[:errors] = user.errors.full_messages
+      flash[:errors] = user.errors.full_messages
 
-      render :new
+      redirect_to "/#"
     end
   end
 

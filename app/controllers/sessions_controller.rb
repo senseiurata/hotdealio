@@ -13,20 +13,20 @@ class SessionsController < ApplicationController
 
       redirect_to "/#"
     else
-      if flash.now[:errors].nil?
-        flash.now[:errors] = ["Invalid credentials!"]
+      if flash[:errors].nil?
+        flash[:errors] = ["Invalid credentials!"]
       else
-        flash.now[:errors].push("Invalid credentials!")
+        flash[:errors].push("Invalid credentials!")
       end
 
-      render :new
+      redirect_to "/#"
     end
   end
 
   def destroy
     log_out!(current_user)
 
-    redirect_to new_session_url
+    redirect_to "/#"
   end
 
   private

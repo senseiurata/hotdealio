@@ -15,14 +15,13 @@
         <li>Welcome, <span class="text-username"><%= current_user.username %></span>!</li>
         <li><%= button_to "Sign Out", session_url, method: :delete, class: "btn btn-xs btn-white" %></li>
       <% else %>
-        <li><%= button_to "Sign Up", new_user_url, method: :get, class: "btn btn-xs btn-white" %></li>
-        <li><%= button_to "Sign In", new_session_url, method: :get, class: "btn btn-xs btn-white" %></li>
+        <li><button class="btn btn-xs btn-white btn-sign-in" href="#signin" data-toggle="modal" data-target=".bs-modal-sm">Sign In</button></li>
+        <li><button class="btn btn-xs btn-white btn-sign-up" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign Up</button></li>
       <% end %>
     </ul>
   </div>
 </nav>
 
-<div class="container">
   <% flash[:errors].try(:each) do |error| %>
     <div class="alert alert-danger">
       <%= error %>
@@ -38,7 +37,104 @@
   <div class="container">
   <%= yield %>
   </div>
+
+
+
+<div class="modal fade bs-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <br>
+        <div class="bs-example bs-example-tabs">
+            <ul id="myTab" class="nav nav-tabs">
+              <li class="active"><a href="#signin" data-toggle="tab">Sign In</a></li>
+              <li class=""><a href="#signup" data-toggle="tab">Sign Up</a></li>
+            </ul>
+        </div>
+      <div class="modal-body">
+        <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active in" id="signin">
+            <form class="form-horizontal" action="<%= session_url %>" method="post">
+              <%= auth_token_helper %>
+            <fieldset>
+            <!-- Sign In Form -->
+            <!-- Text input-->
+            <div class="control-group">
+              <label class="control-label" for="userid">Username:</label>
+              <div class="controls">
+                <input required="" id="userid" name="user[username]" type="text" class="form-control" placeholder="username" class="input-medium" required="">
+              </div>
+            </div>
+
+            <!-- Password input-->
+            <div class="control-group">
+              <label class="control-label" for="passwordinput">Password:</label>
+              <div class="controls">
+                <input required="" id="passwordinput" name="user[password]" class="form-control" type="password" placeholder="******" class="input-medium">
+              </div>
+            </div>
+
+            <!-- Button -->
+            <div class="control-group">
+              <label class="control-label" for="signin"></label>
+              <div class="controls">
+                <input type="submit" class="btn btn-success" value="Sign In">
+              </div>
+            </div>
+            </fieldset>
+            </form>
+        </div>
+        <div class="tab-pane fade" id="signup">
+            <form class="form-horizontal" action="<%= users_url %>" method="post">
+              <%= auth_token_helper %>
+            <fieldset>
+            <!-- Sign Up Form -->
+            <!-- Text input-->
+            
+            <!-- Text input-->
+            <div class="control-group">
+              <label class="control-label" for="userid">Username:</label>
+              <div class="controls">
+                <input id="userid" name="user[username]" class="form-control" type="text" placeholder="username" class="input-large" required="">
+              </div>
+            </div>
+            
+            <!-- Password input-->
+            <div class="control-group">
+              <label class="control-label" for="password">Password:</label>
+              <div class="controls">
+                <input id="password" name="user[password]" class="form-control" type="password" placeholder="******" class="input-large" required="">
+              </div>
+            </div>
+         
+            <!-- Button -->
+            <div class="control-group">
+              <label class="control-label" for="confirmsignup"></label>
+              <div class="controls">
+                <input type="submit" class="btn btn-success" value="Sign Up">
+              </div>
+            </div>
+            </fieldset>
+            </form>
+      </div>
+    </div>
+      </div>
+      <div class="modal-footer">
+      <center>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </center>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+  $('.btn-sign-in').on('click', function () {
+    $('#myTab a[href="#signin"]').tab('show');
+  })
+  $('.btn-sign-up').on('click', function () {
+    $('#myTab a[href="#signup"]').tab('show');
+  })
+</script>
 
 </body>
 </html>

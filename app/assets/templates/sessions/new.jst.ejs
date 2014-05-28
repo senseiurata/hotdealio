@@ -1,0 +1,7 @@
+<% if (current_user.id) { %>
+  <li>Welcome, <span class="text-username"><%= Hotdealio.user.escape('username') %></span>!</li>
+  <li><button class="btn btn-xs btn-white">Sign Out</button></li>
+<% } else { %>
+  <li><button class="btn btn-xs btn-white">Sign Up</button></li>
+  <li><button class="btn btn-xs btn-white">Sign In</button></li>
+<% } %>
