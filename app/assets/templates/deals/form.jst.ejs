@@ -1,28 +1,35 @@
 <div class="row">
+  <h2>
+  <% if (deal.get('id')) { %>
+    Update Deal
+  <% } else { %>
+    Post New Deal
+  <% } %>
+  </h2>
   <form class="form-horizonal col-xs-8 new-deal-form" role="form">
     <div class="form-group clearfix">
       <label for="deal_url" class="col-xs-2 control-label">URL</label>
       <div class="col-xs-10">
-        <input type="text" class="form-control" name="deal[url]" id="deal_url" placeholder="URL">
+        <input type="text" class="form-control" name="deal[url]" id="deal_url" placeholder="URL" value="<%= deal.escape('url') %>">
       </div>
     </div>
     <div class="form-group clearfix">
       <label for="deal_title" class="col-xs-2 control-label">Title</label>
       <div class="col-xs-10">
-        <input type="text" name="deal[title]" id="deal_title" class="form-control" placeholder="Title">
+        <input type="text" name="deal[title]" id="deal_title" class="form-control" placeholder="Title" value="<%= deal.escape('title') %>">
       </div>
     </div>
     <div class="form-group clearfix">
       <label for="deal_description" class="col-xs-2 control-label">Description</label>
       <div class="col-xs-10">
-        <textarea name="deal[description]" id="deal_description" placeholder="Description" class="form-control"></textarea> 
+        <textarea name="deal[description]" id="deal_description" placeholder="Description" class="form-control"><%= deal.escape('description') %></textarea> 
       </div>
     </div>
     <div class="form-group clearfix">
       <label for="deal_image_url" class="col-xs-2 control-label">Image URL</label>
       <div class="col-xs-10">
-        <input type="text" name="deal[image_url]" id="deal_image_url" class="form-control" placeholder="Image URL">
-      </div>    
+        <input type="text" name="deal[image_url]" id="deal_image_url" class="form-control" placeholder="Image URL" value="<%= deal.escape('image_url') %>">
+      </div>
     </div>
     <div class="form-group clearfix">
       <label class="col-xs-2 control-label">Categories</label>
@@ -30,8 +37,13 @@
         <% categories.each(function (category) { %>
           <input type="checkbox"
             name="deal[category_ids][]"
-            id="deal_category_<%= category.escape('name') %>"
-            value="<%= category.get('id') %>">
+            id="deal_category_<%= category.escape('name').toLowerCase() %>"
+            value="<%= category.get('id') %>"
+            <% Hotdealio.myCategories = deal.categories() %>
+            <% if (deal.categories().pluck('name').indexOf(category.escape('name')) !== -1) { %>
+              checked
+            <% } %>
+            >
           <label for="deal_category_<%= category.escape('name') %>" class="control-label"><%= category.escape('name') %></label>
         <% }); %>
       </div>

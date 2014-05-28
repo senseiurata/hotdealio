@@ -12,27 +12,29 @@
   <div class="container-fluid">
     <ul class="nav navbar-nav navbar-right nav-account-items">
       <% if current_user %>
-        <li>Welcome, <span class="text-username"><%= current_user.username %></span>!</li>
+        <li><span class="navbar-text-welcome">Welcome, <span class="navbar-text-username"><%= current_user.username %></span>!</span></li>
         <li><%= button_to "Sign Out", session_url, method: :delete, class: "btn btn-xs btn-white" %></li>
       <% else %>
-        <li><button class="btn btn-xs btn-white btn-sign-in" href="#signin" data-toggle="modal" data-target=".bs-modal-sm">Sign In</button></li>
-        <li><button class="btn btn-xs btn-white btn-sign-up" href="#signup" data-toggle="modal" data-target=".bs-modal-sm">Sign Up</button></li>
+        <li>
+          <button class="btn btn-xs btn-white btn-sign-in"
+            href="#signin" data-toggle="modal"
+            data-target=".bs-modal-sm" data-toggle="popover">
+            Sign In
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-xs btn-white btn-sign-up"
+            href="#signup" data-toggle="modal"
+            data-target=".bs-modal-sm" data-toggle="popover">
+            Sign Up
+          </button>
+        </li>
       <% end %>
     </ul>
   </div>
 </nav>
 
-  <% flash[:errors].try(:each) do |error| %>
-    <div class="alert alert-danger">
-      <%= error %>
-    </div>
-  <% end %>
 
-  <% unless flash[:notice].nil? %>
-    <div class="alert alert-info">
-      <%= flash[:notice] %>
-    </div>
-  <% end %>
 
   <div class="container">
   <%= yield %>
@@ -128,12 +130,45 @@
 </div>
 
 <script>
+  //selects the proper tab on sign in / sign up modal
   $('.btn-sign-in').on('click', function () {
     $('#myTab a[href="#signin"]').tab('show');
   })
   $('.btn-sign-up').on('click', function () {
     $('#myTab a[href="#signup"]').tab('show');
   })
+
+  <% unless flash[:sign_up].nil? %>
+    $('.btn-sign-up').popover({
+      title: "Error",
+      content: "<%= flash[:sign_up].try(:join, '<br>') %>",
+      placement: 'bottom'
+    })
+    $('.btn-sign-up').popover('show');
+
+    setTimeout((function () {
+      $('.btn-sign-up').popover('destroy')
+    }), 6000);
+  <% end %>
+
+  <% unless flash[:sign_in].nil? %>
+    $('.btn-sign-in').popover({
+      title: "Error",
+      content: "<%= flash[:sign_in].try(:join, '<br>') %>",
+      placement: 'bottom'
+    })
+    $('.btn-sign-in').popover('show')
+
+    setTimeout((function () {
+      $('.btn-sign-in').popover('destroy')
+    }), 6000);
+  <% end %>
+
+  $('.comment-container').hover(function () {
+    $(this).find(".btn-comment-reply").show();
+  }, function () {
+    $(this).find(".btn-comment-reply").hide();
+  });
 </script>
 
 </body>

@@ -18,6 +18,12 @@
       <%= category.escape('name') %>
     <% }); %>
   </p>
+  <div>
+    <% if (Hotdealio.currentUserId === deal.get('submitter_id')) { %>
+      <button class="btn btn-default btn-purple btn-deal-update">Update</button>
+      <button class="btn btn-default btn-purple btn-deal-delete">Delete</button>
+    <% } %>
+  </div>
 </div>
 
 <h3>Comments</h3>

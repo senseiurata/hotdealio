@@ -20,7 +20,7 @@
     <div class="comment-body-container">
       <%= comment.escape('body') %>
     </div>
-    <button class="btn btn-primary btn-comment-reply btn-xs" data-toggle="modal" data-target=".post-reply-modal-<%= comment.get('id') %>">Reply</button>
+    <button class="btn btn-primary btn-xs btn-comment-reply" data-toggle="modal" data-target=".post-reply-modal-<%= comment.get('id') %>">Reply</button>
 
     <div class="modal fade post-reply-modal-<%= comment.get('id') %>" tabindex="-1" role="dialog" aria-labelledby="replyLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">

@@ -5,7 +5,9 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
     "click button.deal-upvote": "upvote",
     "click button.deal-downvote": "downvote",
     "submit form.deal-post-comment": "postComment",
-    "click button.btn-open-post-comment-modal": "openModal"
+    "click button.btn-open-post-comment-modal": "openModalComment",
+    "click button.btn-deal-update": "dealUpdate",
+    "click button.btn-deal-delete": "dealDelete"
   },
 
   initialize: function () {
@@ -17,7 +19,7 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
     //this.model.comments().each(this.addComment.bind(this));
   },
 
-  render: function () {
+  render: function (options) {
     var renderedContent = this.template({ deal: this.model })
 
     this.$el.html(renderedContent);
@@ -208,13 +210,33 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
     });
   },
 
-  openModal: function (event) {
+  openModalComment: function (event) {
     event.preventDefault();
 
     $('.post-deal-comment-modal').modal('show');
     
     //fix later: not focusing on textarea
     $('.deal-comment-body').focus();
+  },
+
+  dealUpdate: function (event) {
+    event.preventDefault();
+
+    if (Hotdealio.currentUserId === this.model.get('submitter_id')) {
+      Backbone.history.navigate("#/deals/" + this.model.get('id') + "/edit");
+    } else {
+      $('#myModal').modal('show');
+    }    
+  },
+
+  dealDelete: function (event) {
+    event.preventDefault();
+
+    this.model.destroy({
+      success: function () {
+        Backbone.history.navigate("#");
+      }
+    });
   }
 
 });

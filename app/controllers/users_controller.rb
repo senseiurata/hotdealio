@@ -7,13 +7,22 @@ class UsersController < ApplicationController
     user = User.new(user_params)
 
     if user.save
-      flash[:notice] = "Account created!"
+      #fix later: refactor
+      if flash[:sign_up].nil?
+        flash[:sign_up] = ["Account created!"]
+      else
+        flash[:sign_up].push("Account created!")
+      end
 
       log_in!(user)
 
       redirect_to "/#"
     else
-      flash[:errors] = user.errors.full_messages
+      if flash[:sign_up].nil?
+        flash[:sign_up] = user.errors.full_messages
+      else
+        flash[:sign_up].concat(user.errors.full_messages)
+      end
 
       redirect_to "/#"
     end

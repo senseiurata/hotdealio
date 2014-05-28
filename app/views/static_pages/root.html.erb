@@ -3,7 +3,7 @@
 <div id="content" class="container"></div>
 <script>
   <% unless current_user.nil? %>
-    var currentUserId = <%= current_user.id %>;
+    Hotdealio.currentUserId = <%= current_user.id %>;
   <% end %>
 
   $(function () {

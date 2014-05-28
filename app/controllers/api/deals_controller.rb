@@ -1,6 +1,6 @@
 module Api
   class DealsController < ApiController
-    before_action :ensure_logged_in!, only: [:create]
+    before_action :ensure_logged_in!, only: [:create, :update, :destroy]
 
     def create
       @deal = current_user.deals.new(deal_params)
@@ -11,6 +11,21 @@ module Api
       @current_user_vote = user_votes.where(user_id: current_user.id).first
 
       if @deal.save
+        render partial: "api/deals/deal", locals: { deal: @deal, current_user_vote: @current_user_vote }
+      else
+        render json: { errors: @deal.errors.full_messages }, status: 422
+      end
+    end
+
+    def update
+      @deal = Deal.find(params[:id])
+
+      #fix later: refactor
+      user_votes = @deal.user_votes
+
+      @current_user_vote = user_votes.where(user_id: current_user.id).first
+
+      if @deal.update_attributes(deal_params)
         render partial: "api/deals/deal", locals: { deal: @deal, current_user_vote: @current_user_vote }
       else
         render json: { errors: @deal.errors.full_messages }, status: 422
@@ -34,6 +49,24 @@ module Api
 
 #      render partial: "api/deals/show", locals: { deal: @deal, current_user_vote: @current_user_vote }
       render partial: "api/deals/show", locals: { deal: @deal, current_user: current_user }
+    end
+
+    def recent
+      @deals = Deal.order('created_at DESC').limit(5)
+
+      render partial: "api/deals/index", locals: { deals: @deals }
+    end
+
+    def destroy
+      @deal = Deal.find(params[:id])
+
+      if @deal.submitter_id == current_user.id
+        @deal.destroy
+
+        render partial: "api/deals/show", locals: { deal: @deal, current_user: current_user }
+      else
+        render json: { errors: ["Invalid user!"] }, status: 422
+      end
     end
 
     private

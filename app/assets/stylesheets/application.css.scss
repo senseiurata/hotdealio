@@ -22,8 +22,8 @@ $btn-dark-purple: #464686;
 $btn-dark-purple-hover: #565696;
 $a-dark-purple: #464686;
 $a-dark-purple-hover: #464686;
-$btn-blue: #4286c1;
-$btn-blue-hover: #5296d1;
+$btn-purple: #4286c1;
+$btn-purple-hover: #5296d1;
 $pill-dark-purple: #464686;
 $btn-light: #e7e7ff;
 $btn-light-hover: #464686;
@@ -43,7 +43,14 @@ $comment-left-border-hover: #464686;
 
 .navbar-static-top {
   background-color: $navbar-purple;
+};
+
+.navbar-text-welcome {
   color: white;
+};
+
+.navbar-text-username {
+  font-weight: bold;
 };
 
 .nav-account-items > li {
@@ -60,18 +67,14 @@ $comment-left-border-hover: #464686;
   color: $btn-dark-purple;
 };
 
-.btn-blue {
-  background-color: $btn-blue;
+.btn-purple {
+  background-color: $btn-dark-purple;
   color: white;
 };
 
-.btn-blue:hover {
-  background-color: $btn-blue-hover;
+.btn-purple:hover {
+  background-color: $btn-dark-purple-hover;
   color: white;
-};
-
-.text-username {
-  font-weight: bold;
 };
 
 .category-pills {
@@ -121,12 +124,10 @@ a:hover {
 
 .btn-post-new-deal {
   margin: 30px 30px 20px 30px;
-  background-color: $btn-dark-purple;
 };
 
 .btn-post-new-deal:hover {
   margin: 30px 30px 20px 30px;
-  background-color: $btn-dark-purple-hover;
 };
 
 .deal-row-container {
@@ -169,11 +170,18 @@ a:hover {
   margin: 0 0;
 };
 
-
 .deal-upvote:hover, .deal-downvote:hover {
   background-color: white;
   color: $btn-light-hover;
   margin: 0 0;
+};
+
+.btn-deal-update {
+  margin-right: 5px;
+};
+
+.btn-deal-delete {
+  
 };
 
 .comment-upvote, .comment-downvote {
@@ -242,7 +250,7 @@ ul {
   white-space: pre-wrap;
 }
 
-.comment-body-container:hover {
+.comment-container:hover {
   border-left-color: $comment-left-border-hover;
 }
 
@@ -258,6 +266,10 @@ ul {
 .comment-items > ul {
   padding: 10px 0 10px 10px;
 };
+
+.btn-comment-reply {
+  display: none;
+}
 
 .vote-area-container {
   width: 50px;

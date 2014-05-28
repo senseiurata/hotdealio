@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :users, only: [:new, :create]
-  resource :session, only: [:new, :create, :destroy]
+  resources :users, only: [:create]
+  resource :session, only: [:create, :destroy]
 
   # resources :categories, only: [:show, :index]
   # resources :deals, only: [:new, :create, :edit, :update, :destroy, :show] do
@@ -16,15 +16,18 @@ Rails.application.routes.draw do
   #   end
   # end
 
+
   namespace :api, defaults: { format: :json } do
+    get "deals/recent", to: "deals#recent"
     # resources :users, only: [:create]
     # resource :session, only: [:create, :destroy]
     resources :categories, only: [:show, :index, :create]
-    resources :deals, only: [:new, :create, :edit, :update, :destroy, :show, :index] do
+    resources :deals, only: [:create, :update, :destroy, :show, :index] do
       resources :comments, only: [:create, :update, :show]
     end
     resources :user_votes, only: [:create, :update]
   end
+
 
   root to: "static_pages#root"
 end
