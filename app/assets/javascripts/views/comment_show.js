@@ -22,25 +22,39 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
   upvote: function (event) {
     event.stopImmediatePropagation();
 
-    var originalUserVoteValue = this.userVoteValue();
-    var that = this;
+    if (Hotdealio.currentUserId) {
+      var originalUserVoteValue = this.userVoteValue();
+      var that = this;
 
-    //fix later: refactor upvote/downvote
-    // if userVote has voted before
-    if (this.model.userVote.get('id')) {
-      // cancel upvote if upvoted already
-      if (this.model.userVote.get('value') === 1) {
-        this.saveUserVote(0);
+      //fix later: refactor upvote/downvote
+      // if userVote has voted before
+      if (this.model.userVote.get('id')) {
+        // cancel upvote if upvoted already
+        if (this.model.userVote.get('value') === 1) {
+          this.saveUserVote(0);
 
-        this.model.userVote.save({}, {
-          success: function () {
-            var commentVoteText = that.updateVotes(originalUserVoteValue, 0);
-            $('.comment-' + that.model.get('id') + '-votes').html(commentVoteText);
+          this.model.userVote.save({}, {
+            success: function () {
+              var commentVoteText = that.updateVotes(originalUserVoteValue, 0);
+              $('.comment-' + that.model.get('id') + '-votes').html(commentVoteText);
 
-            $('.comment-' + that.model.get('id') + '-upvote').removeClass('upvoted');
-          }
-        });
-      } else { //otherwise, upvote
+              $('.comment-' + that.model.get('id') + '-upvote').removeClass('upvoted');
+            }
+          });
+        } else { //otherwise, upvote
+          this.saveUserVote(1);
+
+          this.model.userVote.save({}, {
+            success: function () {
+              var commentVoteText = that.updateVotes(originalUserVoteValue, 1);
+              $('.comment-' + that.model.get('id') + '-votes').html(commentVoteText);
+
+              $('.comment-' + that.model.get('id') + '-upvote').addClass('upvoted');
+              $('.comment-' + that.model.get('id') + '-downvote').removeClass('downvoted');
+            }
+          });        
+        }
+      } else {  //never voted before
         this.saveUserVote(1);
 
         this.model.userVote.save({}, {
@@ -49,45 +63,49 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
             $('.comment-' + that.model.get('id') + '-votes').html(commentVoteText);
 
             $('.comment-' + that.model.get('id') + '-upvote').addClass('upvoted');
-            $('.comment-' + that.model.get('id') + '-downvote').removeClass('downvoted');
           }
-        });        
-      }
-    } else {  //never voted before
-      this.saveUserVote(1);
-
-      this.model.userVote.save({}, {
-        success: function () {
-          var commentVoteText = that.updateVotes(originalUserVoteValue, 1);
-          $('.comment-' + that.model.get('id') + '-votes').html(commentVoteText);
-
-          $('.comment-' + that.model.get('id') + '-upvote').addClass('upvoted');
-        }
-      });
+        });
+      }      
+    } else {
+      $('#myModal').modal('show');
     }
   },
 
   downvote: function (event) {
     event.stopImmediatePropagation();
 
-    var originalUserVoteValue = this.userVoteValue();
-    var that = this;
+    if (Hotdealio.currentUserId) {
+      var originalUserVoteValue = this.userVoteValue();
+      var that = this;
 
-    // if userVote has voted before
-    if (this.model.userVote.get('id')) {
-      // cancel upvote if downvoted already
-      if (this.model.userVote.get('value') === -1) {
-        this.saveUserVote(0);
+      // if userVote has voted before
+      if (this.model.userVote.get('id')) {
+        // cancel upvote if downvoted already
+        if (this.model.userVote.get('value') === -1) {
+          this.saveUserVote(0);
 
-        this.model.userVote.save({}, {
-          success: function () {
-            var commentVoteText = that.updateVotes(originalUserVoteValue, 0);
-            $('.comment-' + that.model.get('id') + '-votes').html(commentVoteText);
+          this.model.userVote.save({}, {
+            success: function () {
+              var commentVoteText = that.updateVotes(originalUserVoteValue, 0);
+              $('.comment-' + that.model.get('id') + '-votes').html(commentVoteText);
 
-            $('.comment-' + that.model.get('id') + '-downvote').removeClass('downvoted');
-          }
-        });
-      } else { //otherwise, downvote
+              $('.comment-' + that.model.get('id') + '-downvote').removeClass('downvoted');
+            }
+          });
+        } else { //otherwise, downvote
+          this.saveUserVote(-1);
+
+          this.model.userVote.save({}, {
+            success: function () {
+              var commentVoteText = that.updateVotes(originalUserVoteValue, -1);
+              $('.comment-' + that.model.get('id') + '-votes').html(commentVoteText);
+
+              $('.comment-' + that.model.get('id') + '-upvote').removeClass('upvoted');
+              $('.comment-' + that.model.get('id') + '-downvote').addClass('downvoted');
+            }
+          });        
+        }
+      } else {  //never voted before
         this.saveUserVote(-1);
 
         this.model.userVote.save({}, {
@@ -95,22 +113,12 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
             var commentVoteText = that.updateVotes(originalUserVoteValue, -1);
             $('.comment-' + that.model.get('id') + '-votes').html(commentVoteText);
 
-            $('.comment-' + that.model.get('id') + '-upvote').removeClass('upvoted');
             $('.comment-' + that.model.get('id') + '-downvote').addClass('downvoted');
           }
-        });        
+        });
       }
-    } else {  //never voted before
-      this.saveUserVote(-1);
-
-      this.model.userVote.save({}, {
-        success: function () {
-          var commentVoteText = that.updateVotes(originalUserVoteValue, -1);
-          $('.comment-' + that.model.get('id') + '-votes').html(commentVoteText);
-
-          $('.comment-' + that.model.get('id') + '-downvote').addClass('downvoted');
-        }
-      });
+    } else {
+      $('#myModal').modal('show');      
     }
   },
 

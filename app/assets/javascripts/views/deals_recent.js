@@ -6,15 +6,16 @@ window.Hotdealio.Views.DealsRecent = Backbone.View.extend({
   },
 
   render: function () {
-    console.log("recent deals rendered");
-    console.log(this.collection);
-
     var renderedContent = 
       this.template({
         deals: this.collection
       });
 
     this.$el.html(renderedContent);
+
+    $('.deal-recent-entry').hover(function () {
+      $(this).addClass('deal-recent-entry:hover');
+    });
 
     return this;
   }

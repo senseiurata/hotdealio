@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140522005003) do
+ActiveRecord::Schema.define(version: 20140528234052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,13 +42,17 @@ ActiveRecord::Schema.define(version: 20140522005003) do
   add_index "deal_categories", ["deal_id"], name: "index_deal_categories_on_deal_id", using: :btree
 
   create_table "deals", force: true do |t|
-    t.text     "url",          null: false
-    t.string   "title",        null: false
+    t.text     "url",                     null: false
+    t.string   "title",                   null: false
     t.text     "description"
     t.string   "image_url"
-    t.integer  "submitter_id", null: false
+    t.integer  "submitter_id",            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "deal_image_file_name"
+    t.string   "deal_image_content_type"
+    t.integer  "deal_image_file_size"
+    t.datetime "deal_image_updated_at"
   end
 
   add_index "deals", ["submitter_id"], name: "index_deals_on_submitter_id", using: :btree

@@ -5,6 +5,8 @@ module Api
     def create
       @deal = current_user.deals.new(deal_params)
 
+      @deal.image_from_url(deal_params[:image_url])
+
       #fix later: refactor
       user_votes = @deal.user_votes
 
@@ -19,6 +21,8 @@ module Api
 
     def update
       @deal = Deal.find(params[:id])
+
+      @deal.image_from_url(deal_params[:image_url])
 
       #fix later: refactor
       user_votes = @deal.user_votes
@@ -52,7 +56,7 @@ module Api
     end
 
     def recent
-      @deals = Deal.order('created_at DESC').limit(5)
+      @deals = Deal.order('created_at DESC').limit(10)
 
       render partial: "api/deals/index", locals: { deals: @deals }
     end

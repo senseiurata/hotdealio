@@ -14,7 +14,6 @@ window.Hotdealio.Views.DealsIndex = Backbone.View.extend({
   },
 
   render: function () {
-    console.log("index rendered")
     var renderedContent = this.template({ deals: this.collection });
 
     this.$el.html(renderedContent)

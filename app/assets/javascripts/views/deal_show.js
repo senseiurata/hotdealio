@@ -43,6 +43,10 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
       $(this).find(".btn-comment-reply").hide();
     });
 
+    $('.deal-tile-container').hover(function () {
+      $(this).addClass('deal-tile-container:hover');
+    });
+
     return this;
   },
 
@@ -84,24 +88,39 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
 
   upvote: function (event) {
     event.preventDefault();
-    var that = this;
-    var originalUserVoteValue = this.userVoteValue();
 
-    // if userVote has voted before
-    if (this.model.userVote.get('id')) {
-      // cancel upvote if upvoted already
-      if (this.model.userVote.get('value') === 1) {
-        this.saveUserVote(0);
+    if (Hotdealio.currentUserId) {
+      var that = this;
+      var originalUserVoteValue = this.userVoteValue();
 
-        this.model.userVote.save({}, {
-          success: function () {
-            var dealVoteText = that.updateVotes(originalUserVoteValue, 0);
-            $('.deal-votes').html(dealVoteText);
+      // if userVote has voted before
+      if (this.model.userVote.get('id')) {
+        // cancel upvote if upvoted already
+        if (this.model.userVote.get('value') === 1) {
+          this.saveUserVote(0);
 
-            $('.deal-upvote').removeClass('upvoted');
-          }
-        });
-      } else { //otherwise, upvote
+          this.model.userVote.save({}, {
+            success: function () {
+              var dealVoteText = that.updateVotes(originalUserVoteValue, 0);
+              $('.deal-votes').html(dealVoteText);
+
+              $('.deal-upvote').removeClass('upvoted');
+            }
+          });
+        } else { //otherwise, upvote
+          this.saveUserVote(1);
+
+          this.model.userVote.save({}, {
+            success: function () {
+              var dealVoteText = that.updateVotes(originalUserVoteValue, 1);
+              $('.deal-votes').html(dealVoteText);
+
+              $('.deal-upvote').addClass('upvoted');
+              $('.deal-downvote').removeClass('downvoted');
+            }
+          });        
+        }
+      } else {  //never voted before
         this.saveUserVote(1);
 
         this.model.userVote.save({}, {
@@ -110,67 +129,60 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
             $('.deal-votes').html(dealVoteText);
 
             $('.deal-upvote').addClass('upvoted');
-            $('.deal-downvote').removeClass('downvoted');
           }
-        });        
+        });
       }
-    } else {  //never voted before
-      this.saveUserVote(1);
-
-      this.model.userVote.save({}, {
-        success: function () {
-          var dealVoteText = that.updateVotes(originalUserVoteValue, 1);
-          $('.deal-votes').html(dealVoteText);
-
-          $('.deal-upvote').addClass('upvoted');
-        }
-      });
+    } else {
+      $('#myModal').modal('show');
     }
   },
 
   downvote: function (event) {
     event.preventDefault();
-    var originalUserVoteValue = this.userVoteValue();
-    var that = this;
 
-    // if userVote has voted before
-    if (this.model.userVote.get('id')) {
-      // cancel downvote if downvoted already
-      if (this.model.userVote.get('value') === -1) {
-        this.saveUserVote(0);
+    if (Hotdealio.currentUserId) {
+      var originalUserVoteValue = this.userVoteValue();
+      var that = this;
 
-        this.model.userVote.save({}, {
-          success: function () {
-            var dealVoteText = that.updateVotes(originalUserVoteValue, 0);
-            $('.deal-votes').html(dealVoteText);
-comment-author-text
-            $('.deal-downvote').removeClass('downvoted');
-          }
-        });
-      } else { //otherwise, downvote
+      // if userVote has voted before
+      if (this.model.userVote.get('id')) {
+        // cancel downvote if downvoted already
+        if (this.model.userVote.get('value') === -1) {
+          this.saveUserVote(0);
+
+          this.model.userVote.save({}, {
+            success: function () {
+              var dealVoteText = that.updateVotes(originalUserVoteValue, 0);
+              $('.deal-votes').html(dealVoteText);
+              $('.deal-downvote').removeClass('downvoted');
+            }
+          });
+        } else { //otherwise, downvote
+          this.saveUserVote(-1);
+
+          this.model.userVote.save({}, {
+            success: function () {
+              var dealVoteText = that.updateVotes(originalUserVoteValue, -1);
+              $('.deal-votes').html(dealVoteText);
+
+              $('.deal-downvote').addClass('downvoted');
+              $('.deal-upvote').removeClass('upvoted');
+            }
+          });
+        }
+      } else {  //never voted before
         this.saveUserVote(-1);
 
         this.model.userVote.save({}, {
           success: function () {
             var dealVoteText = that.updateVotes(originalUserVoteValue, -1);
             $('.deal-votes').html(dealVoteText);
-
             $('.deal-downvote').addClass('downvoted');
-            $('.deal-upvote').removeClass('upvoted');
           }
         });
       }
-    } else {  //never voted before
-      this.saveUserVote(-1);
-
-      this.model.userVote.save({}, {
-        success: function () {
-          var dealVoteText = that.updateVotes(originalUserVoteValue, -1);
-          $('.deal-votes').html(dealVoteText);
-comment-author-text
-          $('.deal-downvote').addClass('downvoted');
-        }
-      });
+    } else {
+      $('#myModal').modal('show');
     }
   },
 

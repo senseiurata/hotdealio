@@ -1,17 +1,18 @@
 <h1>All Deals</h1>
 
-<div>
+<div class="deal-outer-container">
+  <div class="deal-recent-container"></div>
   <div class="deal-rows-all">
 
     <% var dealCount = 0; %>
     
     <div class="deal-row-container">
       <% deals.each(function (deal, index) { %>
-        <div class="col-xs-3">
+        <div class="deal-tile-container">
           <a href="/#/deals/<%= deal.get('id') %>">
-            <img src="<%= deal.escape('image_url') %>" class="deal-tile-image">
+            <img src="<%= deal.get('images').medium %>" class="deal-tile-image">
           </a>
-          <span class="votes-text">
+          <span class="votes-text recent-deal-votes-text">
             <% if (deal.get('votes') > 0) { %>+<% } %><%= deal.get('votes') %></span>
           <a href="/#/deals/<%= deal.get('id') %>">
             <%= deal.escape('title') %>
@@ -21,15 +22,12 @@
         <% if (dealCount % 4 === 3) { %>
 
     </div>
-    <div class="deal-row-container pull-right">
+    <div class="deal-row-container">
 
         <% } %>
         <% dealCount++ %>
 
       <% }); %>
     </div>
-  </div>
-  <div class="deal-recent-container">
-
   </div>
 </div>

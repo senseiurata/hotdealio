@@ -6,6 +6,13 @@ window.Hotdealio.Views.CategoryShow = Backbone.CompositeView.extend({
     this.listenTo(this.model.deals(), "add", this.addDeal);
     this.listenTo(this.model.deals(), "remove", this.removeDeal);
 
+    this.recentDeals = new Hotdealio.Collections.DealsRecent();
+
+    this.recentDeals.fetch()
+
+    this.recentDealsView = new Hotdealio.Views.DealsRecent({
+      collection: this.recentDeals
+    });
   },
 
   render: function () {
@@ -15,6 +22,8 @@ window.Hotdealio.Views.CategoryShow = Backbone.CompositeView.extend({
     this.attachSubviews();
 
     $('.pill-' + this.model.escape('name').toLowerCase()).addClass('active')
+
+    this.$el.find('.deal-recent-container').append(this.recentDealsView.render().$el);
 
     return this;
   },

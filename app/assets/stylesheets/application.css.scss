@@ -28,6 +28,9 @@ $pill-dark-purple: #464686;
 $btn-light: #e7e7ff;
 $btn-light-hover: #464686;
 
+$deal-tile-hover: #f8f8f8;
+$deal-recent-tile-hover: #f8f8f8;
+
 $text-header: #161656;
 
 $text-votes: #464686;
@@ -35,6 +38,9 @@ $text-votes: #464686;
 $comment-container-hover: #fcfcfc;
 $comment-left-border: #e7e7ff;
 $comment-left-border-hover: #464686;
+
+
+//global stuff
 
 
 //navbar stuff
@@ -71,6 +77,7 @@ $comment-left-border-hover: #464686;
 .btn-purple {
   background-color: $btn-dark-purple;
   color: white;
+  border: 0;
 };
 
 .btn-purple:hover {
@@ -134,34 +141,57 @@ a:hover {
 //deal index page stuff
 
 .deal-rows-all {
-  border-top: 1px solid #DDD;
   width: 800px;
-  padding-top: 5px;
-  padding-right: 0;
+  border-top: 1px solid #DDD;
+  padding: 5px 0 0 0;
+  margin: 0;
+  float: right;
 };
 
 .deal-row-container {
-  width: 800px;
+  width: 100%;
   margin-bottom: 5px;
+  padding: 0;
+  margin: 0;
+  float: left;
 };
 
 .deal-tile-container {
-  width: 170px;
+  width: 200px;
   position: relative;
   min-height: 1px;
   padding-left: 15px;
   padding-right: 15px;
   float: left;
-}
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 5px;
+};
+
+.deal-tile-container:hover {
+  background-color: $deal-tile-hover;
+  border-radius: 8px;
+  padding-bottom: 10px;
+  margin-bottom: 5px;
+};
 
 .deal-tile-image {
   margin: 10px 0;
   width: 150px;
 };
 
-.deal-recent-container {
-  width: 300px;
+.recent-deal-container {
+  padding-top: 3px;
 }
+
+.deal-recent-entry {
+
+}
+
+.deal-recent-entry:hover {
+  background-color: $deal-recent-tile-hover;
+}
+
 
 //deal show page stuff
 .deal-show-container {
@@ -304,6 +334,29 @@ ul {
   width: 50px;
 }
 
+//recent deals stuff
+
+.deal-recent-all-container {
+  border-top: 1px solid;
+  border-color: #DDD;
+  padding-top: 10px;
+};
+
+
+.deal-recent-container {
+  width: 340px;
+  padding: 20px;
+  float: right;
+  margin-top: -59px;
+};
+
+.recent-deal-text {
+  font-size: 12px;
+};
+
+.recent-deal-votes-text {
+
+};
 
 //fix later:
 .btn-primary {

@@ -25,6 +25,8 @@ window.Hotdealio.Views.DealForm = Backbone.View.extend({
   createOrUpdateDeal: function (event) {
     event.preventDefault();
 
+    $('.btn-deal-submit').attr('value', 'Uploading...')
+
     if (Hotdealio.currentUserId) {
       var that = this;
 

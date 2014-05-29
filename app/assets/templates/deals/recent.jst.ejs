@@ -1,5 +1,20 @@
-<h3>Recently Posted</h3>
-
-<% deals.each(function (deal) { %>
-  <p><%= deal.escape('title') %></p>
-<% }); %>
+<h4>Recently Posted</h4>
+<div class="deal-recent-all-container">
+  <% deals.each(function (deal) { %>
+    <div class="deal-recent-entry media">
+      <div class="pull-left">
+        <a href="/#/deals/<%= deal.get('id') %>">
+          <img src="<%= deal.get('images').small %>">
+        </a>
+      </div>
+      <div class="media-body recent-deal-container">
+        <span class="votes-text"><% if (deal.get('votes') > 0) { %>+<% } %><%= deal.get('votes') %></span>
+        <a href="/#/deals/<%= deal.get('id') %>">
+          <span class="recent-deal-text">
+            <%= deal.escape('title') %>
+          </span>
+        </a>
+      </div>
+    </div>
+  <% }); %>
+</div>
