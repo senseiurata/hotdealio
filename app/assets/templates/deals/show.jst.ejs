@@ -12,7 +12,7 @@
         <%= deal.escape('title') %>
       </a>
   </div>
-  <p><%= deal.escape('description') %></p>
+  <p><%= deal.get('description') %></p>
   <p>Categories:
     <% deal.categories().each(function (category) { %>
       <%= category.escape('name') %>

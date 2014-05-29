@@ -16,6 +16,8 @@
 //= require serializeJSON
 //= require underscore
 //= require backbone
+//= require typeahead.jquery
+//= require bloodhound
 //= require hotdealio
 //= require_tree ../templates
 //= require_tree ./models

@@ -8,27 +8,27 @@
   </h2>
   <form class="form-horizonal col-xs-8 new-deal-form" role="form">
     <div class="form-group clearfix">
-      <label for="deal_url" class="col-xs-2 control-label">URL</label>
+      <label for="deal_title" class="col-xs-2 control-label">Title</label>
       <div class="col-xs-10">
-        <input type="text" class="form-control" name="deal[url]" id="deal_url" placeholder="URL" value="<%= deal.escape('url') %>">
+        <input type="text" name="deal[title]" id="deal_title" class="form-control" placeholder='Deal Title (ex. "Jamba Juice Printable Coupon Buy One Get One Free")' value="<%= deal.escape('title') %>">
       </div>
     </div>
     <div class="form-group clearfix">
-      <label for="deal_title" class="col-xs-2 control-label">Title</label>
+      <label for="deal_url" class="col-xs-2 control-label">URL</label>
       <div class="col-xs-10">
-        <input type="text" name="deal[title]" id="deal_title" class="form-control" placeholder="Title" value="<%= deal.escape('title') %>">
+        <input type="text" class="form-control" name="deal[url]" id="deal_url" placeholder='External URL Link (ex. "http://www.jambajuice.com/campaigns/may-2014-bogo")' value="<%= deal.escape('url') %>">
       </div>
     </div>
     <div class="form-group clearfix">
       <label for="deal_description" class="col-xs-2 control-label">Description</label>
       <div class="col-xs-10">
-        <textarea rows="10" name="deal[description]" id="deal_description" placeholder="Description" class="form-control"><%= deal.escape('description') %></textarea> 
+        <textarea rows="10" name="deal[description]" id="deal_description" placeholder='Description (ex. "Jamba Juice Stores [Store Locator] are offering Buy One Get One Free Smoothie or Juice with this Printable Coupon. Coupon valid through 5/26/2014. Limit one offer per customer. ")' class="form-control"><%= deal.get('description') %></textarea> 
       </div>
     </div>
     <div class="form-group clearfix">
       <label for="deal_image_url" class="col-xs-2 control-label">Image URL</label>
       <div class="col-xs-10">
-        <input type="text" name="deal[image_url]" id="deal_image_url" class="form-control" placeholder="Image URL" value="<%= deal.escape('image_url') %>">
+        <input type="text" name="deal[image_url]" id="deal_image_url" class="form-control" placeholder='Deal Image URL (ex. "http://jamba.com/images/www/tempIMGs/jambaLOGO.png")' value="<%= deal.escape('image_url') %>">
       </div>
     </div>
     <div class="form-group clearfix">

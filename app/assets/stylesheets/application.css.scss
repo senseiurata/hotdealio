@@ -60,6 +60,10 @@ $comment-left-border-hover: #464686;
   font-weight: bold;
 };
 
+.nav-account-items {
+  margin-top: -24px;
+};
+
 .nav-account-items > li {
   margin: 5px 5px;
 };
@@ -100,6 +104,13 @@ $comment-left-border-hover: #464686;
   background-color: $pill-dark-purple;
   text-align: center;
 }
+
+.search-bar {
+  height: 25px;
+  font-size: 12px;
+  width: 500px;
+  margin-left: 16px;
+};
 
 //anchor tag stuff
 a {
@@ -176,7 +187,7 @@ a:hover {
 };
 
 .deal-tile-image {
-  margin: 10px 0;
+  margin: 10px;
   width: 150px;
 };
 
