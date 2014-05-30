@@ -263,6 +263,8 @@ values = [-1, 1, 1]
 
 1000.times do
   UserVote.create(user_id: users.sample.id, votable_id: popular_deal_id.sample, votable_type: "Deal", value: values.sample)
+end
+
 endCategory.create!([
   {name: "Technology"},
   {name: "Apparel"},
