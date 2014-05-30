@@ -23,7 +23,7 @@ window.Hotdealio.Routers.AppRouter = Backbone.Router.extend({
   dealsIndex: function () {
     var deals = new Hotdealio.Collections.Deals();
 
-    deals.fetch();
+    deals.fetch({ data: { page: 1 } });
 
     var view = new Hotdealio.Views.DealsIndex({ collection: deals });
 

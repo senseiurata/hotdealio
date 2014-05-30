@@ -13,6 +13,10 @@ window.Hotdealio.Views.DealsIndex = Backbone.View.extend({
     });
   },
 
+  events: {
+    "click .btn-more-deals": "moreDeals"
+  },
+
   render: function () {
     var renderedContent = this.template({ deals: this.collection });
 
@@ -21,5 +25,21 @@ window.Hotdealio.Views.DealsIndex = Backbone.View.extend({
     this.$el.find('.deal-recent-container').append(this.recentDealsView.render().$el);
 
     return this;
+  },
+
+  moreDeals: function () {
+    var that = this;
+
+    if (this.collection.page_number < this.collection.total_pages) {
+      this.collection.fetch({
+        data: { page: this.collection.page_number + 1 },
+        remove: false,
+        wait: true,
+        success: function () {
+          console.log("successfully fetched page " + that.collection.page_number);
+        }
+      });
+    }   
   }
+
 });

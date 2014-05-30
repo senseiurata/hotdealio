@@ -5,5 +5,15 @@ window.Hotdealio.Collections.Deals = Backbone.Collection.extend({
 
   comparator: function (attr) {
     return -attr.get('votes');
+  },
+
+  parse: function (response) {
+    this.page_number = parseInt(response.page_number);
+    this.total_pages = parseInt(response.total_pages);
+
+    console.log(this.page_number)
+    console.log(this.total_pages)
+
+    return response.models;
   }
 });

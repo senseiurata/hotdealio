@@ -1,3 +1,4 @@
+//fix later: refactor to eliminate this collection
 window.Hotdealio.Views.DealsRecent = Backbone.View.extend({
   template: JST['deals/recent'],
 

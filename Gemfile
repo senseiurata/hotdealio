@@ -35,6 +35,7 @@ gem 'ejs'
 gem "paperclip"
 gem "aws-sdk"
 gem 'figaro'
+gem 'kaminari'
 
 # Use unicorn as the app server
 # gem 'unicorn'
