@@ -10,7 +10,9 @@
       <% dealsToday.each(function (deal, index) { %>
         <div class="deal-tile-container">
           <a href="/#/deals/<%= deal.get('id') %>">
+          <div class="deal-tile-image-container">
             <img src="<%= deal.get('images').medium %>" class="deal-tile-image">
+          </div>
           </a>
           <span class="votes-text recent-deal-votes-text">
             <% if (deal.get('votes') > 0) { %>+<% } %><%= deal.get('votes') %></span>

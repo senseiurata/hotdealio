@@ -90,6 +90,11 @@ $comment-left-border-hover: #464686;
   color: white;
 };
 
+.btn-purple:focus {
+  background-color: $btn-dark-purple-hover;
+  color: white;
+};
+
 .category-pills {
 
 };

@@ -54,6 +54,7 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
             }
           });        
         }
+        $('.comment-' + that.model.get('id') + '-downvote').blur();
       } else {  //never voted before
         this.saveUserVote(1);
 
@@ -66,6 +67,7 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
           }
         });
       }      
+      $('.comment-' + that.model.get('id') + '-upvote').blur();
     } else {
       $('#myModal').modal('show');
     }
@@ -105,6 +107,7 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
             }
           });        
         }
+        $('.comment-' + that.model.get('id') + '-downvote').blur();
       } else {  //never voted before
         this.saveUserVote(-1);
 
@@ -116,6 +119,7 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
             $('.comment-' + that.model.get('id') + '-downvote').addClass('downvoted');
           }
         });
+        $('.comment-' + that.model.get('id') + '-downvote').blur();
       }
     } else {
       $('#myModal').modal('show');      

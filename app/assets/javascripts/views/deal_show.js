@@ -132,6 +132,7 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
           }
         });
       }
+      $('.deal-upvote').blur();
     } else {
       $('#myModal').modal('show');
     }
@@ -170,6 +171,7 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
             }
           });
         }
+        $('.deal-downvote').blur();
       } else {  //never voted before
         this.saveUserVote(-1);
 
