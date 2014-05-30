@@ -8,14 +8,15 @@ window.Hotdealio.Collections.Categories = Backbone.Collection.extend({
     var model;
 
     if (model = this.get('id')) {
-      model.fetch();
+      model.fetch({ data: { page: 1 } });
     } else {
       model = new Hotdealio.Models.Category({ id: id });
 
       model.fetch({
         success: function () {
           that.add(model);
-        }
+        },
+        data: { page: 1 }
       });
     }
     

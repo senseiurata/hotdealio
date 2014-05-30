@@ -21,14 +21,41 @@ window.Hotdealio.Routers.AppRouter = Backbone.Router.extend({
   },
 
   dealsIndex: function () {
-    var deals = new Hotdealio.Collections.Deals();
+    var dealsToday = new Hotdealio.Collections.Deals();
+    dealsToday.url = "/api/deals/today"
 
-    deals.fetch({ data: { page: 1 } });
+    var dealsPast7 = new Hotdealio.Collections.Deals();
+    dealsPast7.url = "/api/deals/past7"
 
-    var view = new Hotdealio.Views.DealsIndex({ collection: deals });
+    dealsToday.fetch({ data: { page: 1 } });
+    dealsPast7.fetch({ data: { page: 1 } });
+
+    var view = new Hotdealio.Views.DealsIndex({
+      collection: dealsToday,
+      dealsPast7: dealsPast7
+    });
 
     this._swapView(view);
   },
+
+  categoryShow: function (id) {
+    var category = Hotdealio.categories.getOrFetch(id);
+
+    var view = new Hotdealio.Views.CategoryShow({ model: category });
+
+    this._swapView(view);
+  },
+
+  _swapView: function (newView) {
+    if (this._currentView) {
+      this._currentView.remove();
+    }
+
+    Hotdealio.$content.html(newView.render().$el);
+
+    this._currentView = newView;
+  },
+
 
   dealNew: function () {
     var deal = new Hotdealio.Models.Deal(
@@ -60,23 +87,6 @@ window.Hotdealio.Routers.AppRouter = Backbone.Router.extend({
     });
 
     this._swapView(view);
-  },
-
-  categoryShow: function (id) {
-    var category = Hotdealio.categories.getOrFetch(id);
-
-    var view = new Hotdealio.Views.CategoryShow({ model: category });
-
-    this._swapView(view);
-  },
-
-  _swapView: function (newView) {
-    if (this._currentView) {
-      this._currentView.remove();
-    }
-
-    Hotdealio.$content.html(newView.render().$el);
-
-    this._currentView = newView;
   }
+
 });

@@ -7,7 +7,7 @@
     <% var dealCount = 0; %>
     
     <div class="deal-row-container">
-      <% deals.each(function (deal, index) { %>
+      <% dealsToday.each(function (deal, index) { %>
         <div class="deal-tile-container">
           <a href="/#/deals/<%= deal.get('id') %>">
             <img src="<%= deal.get('images').medium %>" class="deal-tile-image">
@@ -29,7 +29,7 @@
 
       <% }); %>
     </div>
-    <button class="btn btn-default btn-purple pull-right btn-more-deals">See More Deals!</button>
+    <button class="btn btn-default btn-purple pull-right btn-more-deals-today">See More Deals!</button>
   </div>
 </div>
 
@@ -40,7 +40,7 @@
     <% var dealCount = 0; %>
     
     <div class="deal-row-container">
-      <% deals.each(function (deal, index) { %>
+      <% dealsPast7.each(function (deal, index) { %>
         <div class="deal-tile-container">
           <a href="/#/deals/<%= deal.get('id') %>">
             <img src="<%= deal.get('images').medium %>" class="deal-tile-image">
@@ -62,6 +62,6 @@
 
       <% }); %>
     </div>
-    <button class="btn btn-default btn-purple pull-right btn-more-deals">See More Deals!</button>
+    <button class="btn btn-default btn-purple pull-right btn-more-deals-past7">See More Deals!</button>
   </div>
 </div>

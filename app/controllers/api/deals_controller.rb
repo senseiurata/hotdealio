@@ -67,15 +67,21 @@ module Api
     end
 
     def today
-      @deals = Deal.order('created_at DESC').limit(10).includes(:user_votes)
+      @deals = Deal.where("DATE(created_at) = ?", Date.today).includes(:user_votes).sort { |deal1, deal2| deal1.votes < deal2.votes ? 1 : -1 }
 
-      render partial: "api/deals/index", locals: { deals: @deals }
+      @total_pages = - (-@deals.count / 8)
+      @deals = @deals.drop(params[:page].to_i * 8 - 8).take(8)
+
+      render partial: "api/deals/index_paginated", locals: { deals: @deals, page_number: params[:page] }
     end
 
     def past7
-      @deals = Deal.order('created_at DESC').limit(10).includes(:user_votes)
+      @deals = Deal.where("DATE(created_at) != ?", Date.today).includes(:user_votes).sort { |deal1, deal2| deal1.votes < deal2.votes ? 1 : -1 }
 
-      render partial: "api/deals/index", locals: { deals: @deals }
+      @total_pages = - (-@deals.count / 8)
+      @deals = @deals.drop(params[:page].to_i * 8 - 8).take(8)
+
+      render partial: "api/deals/index_paginated", locals: { deals: @deals, page_number: params[:page] }
     end
 
     def destroy

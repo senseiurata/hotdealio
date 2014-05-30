@@ -7,10 +7,14 @@ module Api
     end
 
     def show
+      #fix later: refactor
       @category = Category.find(params[:id])
-      @deals = @category.deals
+      @deals = @category.deals.includes(:user_votes).sort { |deal1, deal2| deal1.votes < deal2.votes ? 1 : -1 }
 
-      render  partial: "api/categories/show", locals: { category: @category, deals: @deals }
+      @total_pages = - (-@deals.count / 8)
+      @deals = @deals.drop(params[:page].to_i * 8 - 8).take(8)
+
+      render partial: "api/categories/show", locals: { category: @category, deals: @deals, page_number: params[:page] }
     end
 
     def create

@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     get "deals/recent", to: "deals#recent"
+    get "deals/today", to: "deals#today"
+    get "deals/past7", to: "deals#past7"
     # resources :users, only: [:create]
     # resource :session, only: [:create, :destroy]
     resources :categories, only: [:show, :index, :create]
