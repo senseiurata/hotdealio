@@ -15,16 +15,23 @@ window.Hotdealio.Views.CategoryShow = Backbone.CompositeView.extend({
     });
   },
 
+  events: {
+    "click .btn-more-deals": "moreDeals",
+  },
+
   render: function () {
     var renderedContent = this.template({ category: this.model })
 
     this.$el.html(renderedContent);
     //this.attachSubviews();
-    Hotdealio.view = this;
 
     $('.pill-' + this.model.escape('name').toLowerCase()).addClass('active')
 
     this.$el.find('.deal-recent-container').append(this.recentDealsView.render().$el);
+
+    if (this.model.page_number === this.model.total_pages) {
+      $('.btn-more-deals').hide();
+    }
 
     return this;
   },
@@ -46,5 +53,20 @@ window.Hotdealio.Views.CategoryShow = Backbone.CompositeView.extend({
     // );
 
     // this.removeSubview(".deal-item", subview);
+  },
+
+  moreDeals: function () {
+    var that = this;
+
+    if (this.model.page_number < this.model.total_pages) {
+      this.model.fetch({
+        data: { page: this.model.page_number + 1 },
+        remove: false,
+        wait: true,
+        success: function () {
+          console.log("successfully fetched page " + that.model.page_number);
+        }
+      });
+    }   
   }
 });

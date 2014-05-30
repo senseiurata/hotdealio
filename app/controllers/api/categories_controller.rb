@@ -11,8 +11,10 @@ module Api
       @category = Category.find(params[:id])
       @deals = @category.deals.includes(:user_votes).sort { |deal1, deal2| deal1.votes < deal2.votes ? 1 : -1 }
 
-      @total_pages = - (-@deals.count / 8)
-      @deals = @deals.drop(params[:page].to_i * 8 - 8).take(8)
+      unless params[:page].nil?
+        @total_pages = - (-@deals.count / 8)
+        @deals = @deals.drop(params[:page].to_i * 8 - 8).take(8)
+      end        
 
       render partial: "api/categories/show", locals: { category: @category, deals: @deals, page_number: params[:page] }
     end

@@ -39,12 +39,18 @@ module Api
     def index
       #fix later: refactor
     #  @deals = Deal.page(params[:page])
-      @deals = Deal.all.includes(:user_votes).sort { |deal1, deal2| deal1.votes < deal2.votes ? 1 : -1 }
-      @total_pages = - (-@deals.count / 8)
-      @deals = @deals.drop(params[:page].to_i * 8 - 8).take(8)
 
+      if params[:page].nil?
+        @deals = Deal.all.includes(:user_votes).sort { |deal1, deal2| deal1.votes < deal2.votes ? 1 : -1 }
 
-      render partial: "api/deals/index_paginated", locals: { deals: @deals, page_number: params[:page] }
+        render partial: "api/deals/index", locals: { deals: @deals }
+      else
+        @deals = Deal.all.includes(:user_votes).sort { |deal1, deal2| deal1.votes < deal2.votes ? 1 : -1 }
+        @total_pages = - (-@deals.count / 8)
+        @deals = @deals.drop(params[:page].to_i * 8 - 8).take(8)
+
+        render partial: "api/deals/index_paginated", locals: { deals: @deals, page_number: params[:page] }
+      end
     end
 
     def show

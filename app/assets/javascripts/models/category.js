@@ -25,15 +25,14 @@ window.Hotdealio.Models.Category = Backbone.Model.extend({
 
   parse: function (payload) {
     if (payload.deals) {
-      console.log(payload.deals)
-      this.deals().set(payload.deals, { parse: true });
+      //this.deals().set(payload.deals, { parse: true });
+      this.deals().add(payload.deals, { parse: true });
 
-      console.log(this.deals().toJSON())
+      this.page_number = parseInt(payload.page_number);
+      this.total_pages = parseInt(payload.total_pages);
+
       delete payload.deals;
     }
-
-    this.page_number = parseInt(payload.page_number);
-    this.total_pages = parseInt(payload.total_pages);
 
     return payload;
   }
