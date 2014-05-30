@@ -23,7 +23,10 @@ Rails.application.routes.draw do
     get "deals/past7", to: "deals#past7"
     # resources :users, only: [:create]
     # resource :session, only: [:create, :destroy]
-    resources :categories, only: [:show, :index, :create]
+    resources :categories, only: [:show, :index, :create] do
+      get "today", to: "categories#today"
+      get "past7", to: "categories#past7"
+    end
     resources :deals, only: [:create, :update, :destroy, :show, :index] do
       resources :comments, only: [:create, :update, :show]
     end

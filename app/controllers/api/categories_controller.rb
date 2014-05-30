@@ -19,6 +19,32 @@ module Api
       render partial: "api/categories/show", locals: { category: @category, deals: @deals, page_number: params[:page] }
     end
 
+    def today
+      #fix later: refactor
+      @category = Category.find(params[:category_id])
+      @deals = @category.deals.where("DATE(deals.created_at) = ?", Date.today).includes(:user_votes).sort { |deal1, deal2| deal1.votes < deal2.votes ? 1 : -1 }
+
+      unless params[:page].nil?
+        @total_pages = - (-@deals.count / 8)
+        @deals = @deals.drop(params[:page].to_i * 8 - 8).take(8)
+      end        
+
+      render partial: "api/categories/show", locals: { category: @category, deals: @deals, page_number: params[:page] }
+    end
+
+    def past7
+      #fix later: refactor
+      @category = Category.find(params[:category_id])
+      @deals = @category.deals.where("DATE(deals.created_at) != ?", Date.today).includes(:user_votes).sort { |deal1, deal2| deal1.votes < deal2.votes ? 1 : -1 }
+
+      unless params[:page].nil?
+        @total_pages = - (-@deals.count / 8)
+        @deals = @deals.drop(params[:page].to_i * 8 - 8).take(8)
+      end        
+
+      render partial: "api/categories/show", locals: { category: @category, deals: @deals, page_number: params[:page] }
+    end
+
     def create
       @category = Category.new(category_params)
 

@@ -39,9 +39,21 @@ window.Hotdealio.Routers.AppRouter = Backbone.Router.extend({
   },
 
   categoryShow: function (id) {
-    var category = Hotdealio.categories.getOrFetch(id);
+    //var category = Hotdealio.categories.getOrFetch(id);
+    var categoryToday = new Hotdealio.Models.Category({ id: id });
+    categoryToday.url = "/api/categories/" + id + "/today";
 
-    var view = new Hotdealio.Views.CategoryShow({ model: category });
+    var categoryPast7 = new Hotdealio.Models.Category({ id: id });
+    categoryPast7.url = "/api/categories/" + id + "/past7";
+
+
+    categoryToday.fetch({ data: { page: 1 } });
+    categoryPast7.fetch({ data: { page: 1 } });
+
+    var view = new Hotdealio.Views.CategoryShow({
+      model: categoryToday,
+      categoryPast7: categoryPast7
+    });
 
     this._swapView(view);
   },

@@ -1,4 +1,4 @@
-<h1><%= category.escape('name') %></h1>
+<h1>Today's <%= categoryToday.escape('name') %> Deals</h1>
 
 <div class="deal-outer-container">
   <div class="deal-recent-container"></div>
@@ -7,7 +7,7 @@
     <% var dealCount = 0; %>
     
     <div class="deal-row-container">
-      <% category.deals().each(function (deal, index) { %>
+      <% categoryToday.deals().each(function (deal, index) { %>
         <div class="deal-tile-container">
           <a href="/#/deals/<%= deal.get('id') %>">
             <img src="<%= deal.get('images').medium %>" class="deal-tile-image">
@@ -29,6 +29,40 @@
 
       <% }); %>
     </div>
-    <button class="btn btn-default btn-purple pull-right btn-more-deals">See More Deals!</button>
+    <button class="btn btn-default btn-purple pull-right btn-more-deals-today">See More Deals!</button>
+  </div>
+</div>
+
+<h1>Past 7 Days</h1>
+
+<div class="deal-outer-container pull-left">
+  <div class="deal-rows-all">
+
+    <% var dealCount = 0; %>
+    
+    <div class="deal-row-container">
+      <% categoryPast7.deals().each(function (deal, index) { %>
+        <div class="deal-tile-container">
+          <a href="/#/deals/<%= deal.get('id') %>">
+            <img src="<%= deal.get('images').medium %>" class="deal-tile-image">
+          </a>
+          <span class="votes-text recent-deal-votes-text">
+            <% if (deal.get('votes') > 0) { %>+<% } %><%= deal.get('votes') %></span>
+          <a href="/#/deals/<%= deal.get('id') %>">
+            <%= deal.escape('title') %>
+          </a>
+        </div>
+
+        <% if (dealCount % 4 === 3) { %>
+
+    </div>
+    <div class="deal-row-container">
+
+        <% } %>
+        <% dealCount++ %>
+
+      <% }); %>
+    </div>
+    <button class="btn btn-default btn-purple pull-right btn-more-deals-past7">See More Deals!</button>
   </div>
 </div>
