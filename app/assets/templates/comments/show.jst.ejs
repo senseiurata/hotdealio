@@ -21,9 +21,11 @@
   </div>
 
     <div class="media-body comment-body-container">
-      <p><%= comment.escape('body') %></p>
+      <p class="comment-body-text"><%= comment.escape('body') %></p>
       <span class="comment-author-text">Comment by: <%= comment.escape('username') %></span>
-      <button class="btn btn-primary btn-xs btn-comment-reply" data-toggle="modal" data-target=".post-reply-modal-<%= comment.get('id') %>">Reply</button>
+      <% if (Hotdealio.currentUserId) { %>
+        <button class="btn btn-primary btn-xs btn-comment-reply" data-toggle="modal" data-target=".post-reply-modal-<%= comment.get('id') %>">Reply</button>
+      <% } %>
     </div>
 
     <!-- fix later: fix to shared modal -->

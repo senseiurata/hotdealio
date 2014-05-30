@@ -5,7 +5,11 @@ module Api
     def create
       @deal = current_user.deals.new(deal_params)
 
-      @deal.image_from_url(deal_params[:image_url])
+      p deal_params[:image_url]
+
+      unless deal_params[:image_url].empty?
+        @deal.image_from_url(deal_params[:image_url])
+      end
 
       #fix later: refactor
       user_votes = @deal.user_votes

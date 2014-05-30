@@ -295,6 +295,10 @@ ul {
 //  margin: 5px 0;
 };
 
+.deal-external-link {
+  margin-left: 4px;
+}
+
 .votes-text {
   background-color: $text-votes;
   color: white;
@@ -317,6 +321,7 @@ ul {
 
 .comment-body-container {
   display: inline-block;
+  margin-left: 4px;
   //white-space: pre-wrap;
 }
 
@@ -342,6 +347,10 @@ ul {
   display: none;
   margin-left: 10px;
 }
+
+.comment-body-text {
+  white-space: pre;
+};
 
 .comment-author-text {
   font-size: 10px;
@@ -428,6 +437,24 @@ ul {
   margin: 0;
 }
 
+
+//sign in / sign up
+
+.popover, .popover-title {
+  font-size: 12px;
+}
+
+.popover {
+  width: 200px;
+  webkit-box-shadow: 0 0 0;
+  box-shadow: 0 0 0;
+}
+
+.popover-title {
+  text-align: center;
+  padding: 0;
+  background-color: white;
+}
 
 //fix later:
 .btn-primary {

@@ -145,7 +145,7 @@
 
   <% unless flash[:sign_up].nil? %>
     $('.btn-sign-up').popover({
-      title: "Error",
+      title: "Sign Up Error",
       content: "<%= flash[:sign_up].try(:join, '<br>') %>",
       placement: 'bottom'
     })
@@ -158,7 +158,7 @@
 
   <% unless flash[:sign_in].nil? %>
     $('.btn-sign-in').popover({
-      title: "Error",
+      title: "Sign In Error",
       content: "<%= flash[:sign_in].try(:join, '<br>') %>",
       placement: 'bottom'
     })

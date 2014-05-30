@@ -7,7 +7,8 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
     "submit form.deal-post-comment": "postComment",
     "click button.btn-open-post-comment-modal": "openModalComment",
     "click button.btn-deal-update": "dealUpdate",
-    "click button.btn-deal-delete": "dealDelete"
+    "click button.btn-deal-delete": "dealDelete",
+    "click button.btn-open-post-comment-modal": "openCommentModal"
   },
 
   initialize: function () {
@@ -257,6 +258,16 @@ window.Hotdealio.Views.DealShow = Backbone.CompositeView.extend({
         Backbone.history.navigate("#", { trigger: true });
       }
     });
+  },
+
+  openCommentModal: function (event) {
+    event.preventDefault();
+
+    if (Hotdealio.currentUserId) {
+      $('#comment-modal').modal('show');
+    } else {
+      $('#myModal').modal('show');
+    }
   }
 
 });
