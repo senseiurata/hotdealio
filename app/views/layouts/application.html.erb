@@ -11,10 +11,7 @@
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="container-fluid">
     <div class="container">
-      <div id="prefetch">
-        <input type="text" class="form-control typeahead" placeholder="Search">
-      </div>
-    <ul class="nav navbar-nav navbar-right nav-account-items">
+      <ul class="nav navbar-nav navbar-right nav-account-items">
       <% if current_user %>
         <li><span class="navbar-text-welcome">Welcome, <span class="navbar-text-username"><%= current_user.username %></span>!</span></li>
         <li><%= button_to "Sign Out", session_url, method: :delete, class: "btn btn-xs btn-white" %></li>
