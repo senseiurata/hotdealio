@@ -84,7 +84,7 @@
             <div class="control-group">
               <label class="control-label" for="signin"></label>
               <div class="controls">
-                <input type="submit" class="btn btn-success" value="Sign In">
+                <input type="submit" class="btn btn-purple" value="Sign In">
               </div>
             </div>
             </fieldset>
@@ -117,7 +117,7 @@
             <div class="control-group">
               <label class="control-label" for="confirmsignup"></label>
               <div class="controls">
-                <input type="submit" class="btn btn-success" value="Sign Up">
+                <input type="submit" class="btn btn-purple" value="Sign Up">
               </div>
             </div>
             </fieldset>
@@ -127,7 +127,19 @@
       </div>
       <div class="modal-footer">
       <center>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <ul class="list-inline">
+          <li>
+            <form action="<%= session_url %>" method="post">
+              <%= auth_token_helper %>
+              <input type="hidden" name="user[username]" value="Guest">
+              <input type="hidden" name="user[password]" value="guestuser">
+              <input type="submit" class="btn btn-purple" value="Sign In as Guest">
+            </form>
+          </li>
+          <li>
+            <button type="button" class="btn btn-default btn-purple" data-dismiss="modal">Close</button>
+          </li>
+        </ul>
         </center>
       </div>
     </div>

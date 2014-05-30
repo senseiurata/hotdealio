@@ -5,8 +5,6 @@ module Api
     def create
       @deal = current_user.deals.new(deal_params)
 
-      p deal_params[:image_url]
-
       unless deal_params[:image_url].empty?
         @deal.image_from_url(deal_params[:image_url])
       end

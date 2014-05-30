@@ -34,18 +34,21 @@
     <div class="form-group clearfix">
       <label class="col-xs-2 control-label">Categories</label>
       <div class="col-xs-10">
-        <% categories.each(function (category) { %>
-          <input type="checkbox"
-            name="deal[category_ids][]"
-            id="deal_category_<%= category.escape('name').toLowerCase() %>"
-            value="<%= category.get('id') %>"
-            <% Hotdealio.myCategories = deal.categories() %>
-            <% if (deal.categories().pluck('name').indexOf(category.escape('name')) !== -1) { %>
-              checked
-            <% } %>
-            >
-          <label for="deal_category_<%= category.escape('name') %>" class="control-label"><%= category.escape('name') %></label>
-        <% }); %>
+        <div class="row">
+          <% categories.each(function (category) { %>
+            <div class="col-xs-2 category-container">
+            <input type="checkbox"
+              name="deal[category_ids][]"
+              id="deal_category_<%= category.escape('name').toLowerCase() %>"
+              value="<%= category.get('id') %>"
+              <% if (deal.categories().pluck('name').indexOf(category.escape('name')) !== -1) { %>
+                checked
+              <% } %>
+              >
+            <label for="deal_category_<%= category.escape('name').toLowerCase() %>" class="control-label label-category"><%= category.escape('name') %></label>
+            </div>
+          <% }); %>
+        </div>
       </div>
     </div>
 

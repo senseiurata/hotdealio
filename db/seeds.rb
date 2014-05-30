@@ -246,7 +246,9 @@ The adjustable nose pads provide you with a comfortable, customizable fit while 
 <p>&nbsp;</p>
 ', submitter_id: 2, category_ids: [7]})
 
-(1..100).each do |id|
+User.create(username: "Guest", password: "guestuser")
+
+(2..100).each do |id|
   User.create(username: "sensei#{id}", password: "sensei")
 end
 
