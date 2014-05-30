@@ -265,7 +265,7 @@ values = [-1, 1, 1]
   UserVote.create(user_id: users.sample.id, votable_id: popular_deal_id.sample, votable_type: "Deal", value: values.sample)
 end
 
-endCategory.create!([
+Category.create!([
   {name: "Technology"},
   {name: "Apparel"},
   {name: "Food"},
