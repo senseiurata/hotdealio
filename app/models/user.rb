@@ -3,10 +3,10 @@ class User < ActiveRecord::Base
 
   before_validation :ensure_session_token
 
-#  validates :username, presence: true
-#  validates :password, length: { minimum: 6, allow_nil: true }
-#  validates :password_digest, presence: { message: "Password can't be blank" }
-#  validates :session_token, presence: true
+  validates :username, presence: true
+  validates :password, length: { minimum: 6, allow_nil: true }
+  validates :password_digest, presence: { message: "Password can't be blank" }
+  validates :session_token, presence: true
 
   has_many :deals, foreign_key: :submitter_id, inverse_of: :submitter
   has_many :comments, inverse_of: :user
