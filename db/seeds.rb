@@ -505,18 +505,6 @@ DealCategory.create!([
   {deal_id: 98, category_id: 15},
   {deal_id: 98, category_id: 19}
 ])
-User.create!([
-  {username: "sensei7", password_digest: "$2a$10$1Cz8jq6bPecFjdrmUZcQh.Gt7wp4O5X.U0IApTcaKgxrT3l7Rzbf6", session_token: "nYZnVKdP-2lIXHlr79VtzA"},
-  {username: "gsdgsdg", password_digest: "$2a$10$YO0aIofinosV8B.m7ENlVOdh0V.CLQe5OpMaA9Y3Q7sg1ZETx/1dW", session_token: "QPjVVXdBMvggVmpNVxD8gw"},
-  {username: "sensei4", password_digest: "$2a$10$9631kViW4B2Mhqs6xMTUQ.u7bh6mVHIPwNJtQy.Q/RRGFkqPoKpee", session_token: "LqHIQlg4Gzl80HMdJfS40w"},
-  {username: "sensei5", password_digest: "$2a$10$dDq5nTBaSOfeFScV3erYr.2SUitXSU40wUQGk9DS/x6a0TixL3qL6", session_token: "2futtj0oNuxuhKFrfsy7xg"},
-  {username: "sensei2", password_digest: "$2a$10$B2DPlqX2GawBm2nvCPzPs.ksgyp7.cfTtagFW166kqZCIbCIWUHki", session_token: "eEd_U3tGT8m2WoMl3EyH4A"},
-  {username: "sensei", password_digest: "$2a$10$o1Zc9pKRkjk3z.Thk.f0pOpUS6.IsjTpFUghneQjDhcridPfwql96", session_token: "uhk4Ro1RhVGsjnfj84CPNg"},
-  {username: "senseisensei", password_digest: "$2a$10$To8PW.c4LZsxuYIbhMfL7.UHeYeMgak6p6CymEL.dM910ZU8lhCSC", session_token: "quVjrNoQKL4kyrEbEnOE3w"},
-  {username: "thesensei", password_digest: "$2a$10$PKpsqBDEM6Hi5T0Akt2Quux9bCBem30Lmgh65laEtEglXf3p/m70S", session_token: "eBacMnrzgqIN7Jn2CHF-ag"},
-  {username: "sensei6", password_digest: "$2a$10$puA8qobdiFZS2.zu.d12yOhGNiA016wgyuaMhWV9Gyq/VPnDHqYUy", session_token: "_49-0IGd5ZNvBVjzmC-Odw"},
-  {username: "sensei3", password_digest: "$2a$10$60JC/vKBKKin70y2PRdta.NGKxcXj2S6iLABsgtYJbtHZrOtbf0OW", session_token: "Nz_XrVY8wWLLPRnyY-jnxA"}
-])
 UserVote.create!([
   {user_id: 3, value: -1, votable_type: "Comment", votable_id: 4},
   {user_id: 3, value: 1, votable_type: "Comment", votable_id: 3},
