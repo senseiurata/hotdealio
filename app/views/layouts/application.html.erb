@@ -11,6 +11,9 @@
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="container-fluid">
     <div class="container">
+<!--       <div id="prefetch">
+        <input type="text" class="form-control typeahead" placeholder="Search">
+      </div> -->
       <ul class="nav navbar-nav navbar-right nav-account-items">
       <% if current_user %>
         <li><span class="navbar-text-welcome">Welcome, <span class="navbar-text-username"><%= current_user.username %></span>!</span></li>
@@ -185,31 +188,31 @@
   });
 
   var deals = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace,
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     limit: 10,
     prefetch: {
-      url: '/api/deals',
-      filter: function(list) {
-        return _.map(list, function(deal) { 
-          return {
-            title: deal.title
-          };
-        });
-      }
+      url: '/api/deals'
     }
   });
  
   // kicks off the loading/processing of `local` and `prefetch`
   deals.initialize();
-   
+  deals.clearPrefetchCache();
+
   $('#prefetch .typeahead').typeahead({
     highlight: true,
     hint: false
   }, {
     name: 'deals',
     displayKey: 'title',
-    source: deals.ttAdapter(),
+    source: deals.ttAdapter()
+  }).on('typeahead:selected', function(obj, datum) {
+    console.log("datum: ")
+    console.log(datum)
+
+    Backbone.history.navigate("#/deals/" + datum.id, true);
+    $('.typeahead').typeahead('destroy');
   });
 
 </script>
