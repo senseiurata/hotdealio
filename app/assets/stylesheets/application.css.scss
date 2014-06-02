@@ -29,8 +29,8 @@ $btn-light: #e7e7ff;
 $btn-light-hover: #464686;
 
 $deal-row-top-row: #DDD;
-$deal-tile-hover: #f8f8f8;
-$deal-recent-tile-hover: #f8f8f8;
+$deal-tile-hover: #f0f0f0;
+$deal-recent-tile-hover: #f0f0f0;
 
 $text-header: #161656;
 
@@ -40,16 +40,19 @@ $comment-container-hover: #fcfcfc;
 $comment-left-border: #e7e7ff;
 $comment-left-border-hover: #464686;
 
+$navbar-hotdealio: #f0f0f0;
 
 //global stuff
 
 
 //navbar stuff
-.navbar {
-  min-height: 0;
-};
+
+.navbar-hotdealio {
+  background-color: $navbar-hotdealio;
+}
 
 .navbar-static-top {
+  min-height: 0;
   background-color: $navbar-purple;
 };
 
@@ -204,9 +207,14 @@ a:hover {
 };
 
 .deal-tile-image {
-  margin: 10px;
-  width: 150px;
+  display: block;
+  margin: auto;
 };
+
+.deal-tile-image-container {
+  width: 150px;
+  margin: 10px;
+}
 
 .recent-deal-container {
   padding-top: 3px;
@@ -220,6 +228,14 @@ a:hover {
   background-color: $deal-recent-tile-hover;
 }
 
+.deal-recent-image-container {
+  width: 64px;
+}
+
+.deal-recent-image {
+  display: block;
+  margin: auto;
+}
 
 //deal show page stuff
 .deal-show-container {

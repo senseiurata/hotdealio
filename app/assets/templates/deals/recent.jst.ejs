@@ -2,9 +2,9 @@
 <div class="deal-recent-all-container">
   <% deals.each(function (deal) { %>
     <div class="deal-recent-entry media">
-      <div class="pull-left">
+      <div class="deal-recent-image-container pull-left">
         <a href="/#/deals/<%= deal.get('id') %>">
-          <img src="<%= deal.get('images').small %>">
+          <img class="deal-recent-image" src="<%= deal.get('images').small %>">
         </a>
       </div>
       <div class="media-body recent-deal-container">

@@ -9,11 +9,11 @@
     <div class="deal-row-container">
       <% dealsToday.each(function (deal, index) { %>
         <div class="deal-tile-container">
-          <a href="/#/deals/<%= deal.get('id') %>">
           <div class="deal-tile-image-container">
-            <img src="<%= deal.get('images').medium %>" class="deal-tile-image">
+            <a href="/#/deals/<%= deal.get('id') %>">
+              <img src="<%= deal.get('images').medium %>" class="deal-tile-image">
+            </a>
           </div>
-          </a>
           <span class="votes-text recent-deal-votes-text">
             <% if (deal.get('votes') > 0) { %>+<% } %><%= deal.get('votes') %></span>
           <a href="/#/deals/<%= deal.get('id') %>">
@@ -44,9 +44,11 @@
     <div class="deal-row-container">
       <% dealsPast7.each(function (deal, index) { %>
         <div class="deal-tile-container">
-          <a href="/#/deals/<%= deal.get('id') %>">
-            <img src="<%= deal.get('images').medium %>" class="deal-tile-image">
-          </a>
+          <div class="deal-tile-image-container">
+            <a href="/#/deals/<%= deal.get('id') %>">
+              <img src="<%= deal.get('images').medium %>" class="deal-tile-image">
+            </a>
+          </div>
           <span class="votes-text recent-deal-votes-text">
             <% if (deal.get('votes') > 0) { %>+<% } %><%= deal.get('votes') %></span>
           <a href="/#/deals/<%= deal.get('id') %>">
