@@ -1,7 +1,5 @@
-<h1>Today's Top Deals</h1>
-
 <div class="deal-outer-container">
-  <div class="deal-recent-container"></div>
+  <h1>Today's Top Deals</h1>
   <div class="deal-rows-all">
 
     <% var dealCount = 0; %>
@@ -14,11 +12,13 @@
               <img src="<%= deal.get('images').medium %>" class="deal-tile-image">
             </a>
           </div>
-          <span class="votes-text recent-deal-votes-text">
-            <% if (deal.get('votes') > 0) { %>+<% } %><%= deal.get('votes') %></span>
-          <a href="/#/deals/<%= deal.get('id') %>">
-            <%= deal.escape('title') %>
-          </a>
+          <div>
+            <span class="votes-text recent-deal-votes-text">
+              <% if (deal.get('votes') > 0) { %>+<% } %><%= deal.get('votes') %></span>
+            <a href="/#/deals/<%= deal.get('id') %>">
+              <%= deal.escape('title') %>
+            </a>
+          </div>
         </div>
 
         <% if (dealCount % 4 === 3) { %>
@@ -33,10 +33,11 @@
     </div>
     <button class="btn btn-default btn-purple pull-right btn-more-deals-today">See More Deals!</button>
   </div>
+  <div class="deal-recent-container"></div>
 </div>
 
-<h1>Past 7 Days</h1>
 <div class="deal-outer-container pull-left">
+  <h1>Past 7 Days</h1>
   <div class="deal-rows-all">
 
     <% var dealCount = 0; %>
