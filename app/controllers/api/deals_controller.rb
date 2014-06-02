@@ -75,7 +75,7 @@ module Api
     end
 
     def today
-      @deals = Deal.where("DATE(created_at) = ?", Date.today).includes(:user_votes).sort { |deal1, deal2| deal1.votes < deal2.votes ? 1 : -1 }
+      @deals = Deal.where("DATE(created_at) > ?", Date.today - 3.days).includes(:user_votes).sort { |deal1, deal2| deal1.votes < deal2.votes ? 1 : -1 }
 
       @total_pages = - (-@deals.count / 8)
       @deals = @deals.drop(params[:page].to_i * 8 - 8).take(8)
@@ -84,7 +84,7 @@ module Api
     end
 
     def past7
-      @deals = Deal.where("DATE(created_at) != ?", Date.today).includes(:user_votes).sort { |deal1, deal2| deal1.votes < deal2.votes ? 1 : -1 }
+      @deals = Deal.where("DATE(created_at) <= ?", Date.today - 3.days).includes(:user_votes).sort { |deal1, deal2| deal1.votes < deal2.votes ? 1 : -1 }
 
       @total_pages = - (-@deals.count / 8)
       @deals = @deals.drop(params[:page].to_i * 8 - 8).take(8)
