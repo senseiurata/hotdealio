@@ -22,7 +22,7 @@ module Api
     def today
       #fix later: refactor
       @category = Category.find(params[:category_id])
-      @deals = @category.deals.where("DATE(deals.created_at) >= ?", Date.new(2014,5,29)).includes(:user_votes).sort { |deal1, deal2| deal1.votes < deal2.votes ? 1 : -1 }
+      @deals = @category.deals.where("DATE(deals.created_at) >= ?", Date.today - 3.days).includes(:user_votes).sort { |deal1, deal2| deal1.votes < deal2.votes ? 1 : -1 }
 
       unless params[:page].nil?
         @total_pages = - (-@deals.count / 8)
@@ -35,7 +35,7 @@ module Api
     def past7
       #fix later: refactor
       @category = Category.find(params[:category_id])
-      @deals = @category.deals.where("DATE(deals.created_at) < ?", Date.new(2014,5,29)).includes(:user_votes).sort { |deal1, deal2| deal1.votes < deal2.votes ? 1 : -1 }
+      @deals = @category.deals.where("DATE(deals.created_at) < ?", Date.today - 3.days).includes(:user_votes).sort { |deal1, deal2| deal1.votes < deal2.votes ? 1 : -1 }
 
       unless params[:page].nil?
         @total_pages = - (-@deals.count / 8)
