@@ -187,6 +187,17 @@
     $(this).find(".btn-comment-reply").hide();
   });
 
+  //configure underscore so template can be used for suggestions
+  $(function() {
+     _.compile = function(templ) {
+        var compiled = this.template(templ);
+        compiled.render = function(ctx) {
+           return this(ctx);
+        }
+        return compiled;
+     }
+  });
+
   var deals = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -198,7 +209,7 @@
           return {
             id: obj.id,
             title: obj.title,
-            image: obj.images.small
+            img: obj.images.small
           }
         });
       }
@@ -215,11 +226,14 @@
   }, {
     name: 'deals',
     displayKey: 'title',
-    source: deals.ttAdapter()
+    source: deals.ttAdapter(),
+    templates: {
+      suggestion: '<%= title %>'
+    },
+    engine: _
   }).on('typeahead:selected', function(obj, datum) {
-    console.log("datum: ")
-    console.log(datum)
-
+    // console.log("datum: ")
+    // console.log(datum)
 
     Backbone.history.navigate("#/deals/" + datum.id, true);
     $('.typeahead').val("");

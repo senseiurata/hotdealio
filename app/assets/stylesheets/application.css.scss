@@ -42,6 +42,8 @@ $comment-left-border-hover: #464686;
 
 $navbar-hotdealio: #f0f0f0;
 
+$typeahead-highlight: #f0f0f0;
+
 //global stuff
 
 
@@ -442,7 +444,7 @@ ul {
 
 .tt-input {
   margin: 5px 0 2px 16px;
-  width: 500px;
+  width: 600px;
   height: 25px;
 }
 
@@ -451,7 +453,7 @@ ul {
 }
 
 .tt-dropdown-menu {
-  width: 500px;
+  width: 600px;
   margin-top: 0;
   margin-left: 15px;
   padding: 8px 0;
@@ -468,7 +470,7 @@ ul {
 
 .tt-suggestion.tt-suggestion.tt-cursor { /* UPDATE: newer versions use .tt-suggestion.tt-cursor */
   color: 0;
-  background-color: #f8f8f8;
+  background-color: $typeahead-highlight;
 }
 
 .tt-suggestion p {
