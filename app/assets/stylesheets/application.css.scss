@@ -65,7 +65,7 @@ $navbar-hotdealio: #f0f0f0;
 };
 
 .nav-account-items {
-  // margin-top: -29px;
+  margin-top: -29px;
 };
 
 .nav-account-items > li {
@@ -170,6 +170,11 @@ a:hover {
 }
 
 //deal index page stuff
+
+.deal-outer-container {
+  width: 800px; 
+  display: inline-block;
+}
 
 .deal-rows-all {
   width: 800px;
@@ -405,7 +410,8 @@ ul {
   width: 340px;
   padding: 20px;
   float: right;
-  margin-top: -59px;
+  margin-top: 10px;
+  display: inline-block;
 };
 
 .recent-deal-text {
