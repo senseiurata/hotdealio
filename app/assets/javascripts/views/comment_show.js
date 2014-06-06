@@ -26,45 +26,30 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
       var originalUserVoteValue = this.userVoteValue();
       var that = this;
 
-      //fix later: refactor upvote/downvote
       // if userVote has voted before
       if (this.model.userVote.get('id')) {
         // cancel upvote if upvoted already
         if (this.model.userVote.get('value') === 1) {
           this.setUserVote(0);
-
-          this.model.userVote.save({}, {
-            success: function () {
-              that.updateVotes(originalUserVoteValue);
-              that.updateUI();
-            }
-          });
-
         } else { //otherwise, upvote
           this.setUserVote(1);
-
-          this.model.userVote.save({}, {
-            success: function () {
-              that.updateVotes(originalUserVoteValue);
-              that.updateUI();
-            }
-          });        
         }
-        $('.comment-' + that.model.get('id') + '-downvote').blur();
       } else {  //never voted before
         this.setUserVote(1);
-
-        this.model.userVote.save({}, {
-          success: function () {
-            that.updateVotes(originalUserVoteValue);
-            that.updateUI();
-          }
-        });
       }      
+
+      this.model.userVote.save({}, {
+        success: function () {
+          that.updateVotes(originalUserVoteValue);
+          that.updateUI();
+        }
+      });
+
       $('.comment-' + that.model.get('id') + '-upvote').blur();
     } else {
       $('#myModal').modal('show');
     }
+
   },
 
   downvote: function (event) {
@@ -79,35 +64,21 @@ window.Hotdealio.Views.CommentShow = Backbone.CompositeView.extend({
         // cancel upvote if downvoted already
         if (this.model.userVote.get('value') === -1) {
           this.setUserVote(0);
-
-          this.model.userVote.save({}, {
-            success: function () {
-              that.updateVotes(originalUserVoteValue);
-              that.updateUI();
-            }
-          });
         } else { //otherwise, downvote
           this.setUserVote(-1);
-
-          this.model.userVote.save({}, {
-            success: function () {
-              that.updateVotes(originalUserVoteValue);
-              that.updateUI();
-            }
-          });        
         }
-        $('.comment-' + that.model.get('id') + '-downvote').blur();
       } else {  //never voted before
         this.setUserVote(-1);
-
-        this.model.userVote.save({}, {
-          success: function () {
-            that.updateVotes(originalUserVoteValue);
-            that.updateUI();
-          }
-        });
-        $('.comment-' + that.model.get('id') + '-downvote').blur();
       }
+
+      this.model.userVote.save({}, {
+        success: function () {
+          that.updateVotes(originalUserVoteValue);
+          that.updateUI();
+        }
+      });
+
+      $('.comment-' + that.model.get('id') + '-downvote').blur();
     } else {
       $('#myModal').modal('show');      
     }
