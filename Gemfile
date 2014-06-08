@@ -37,6 +37,7 @@ gem "aws-sdk"
 gem 'figaro'
 gem 'kaminari'
 gem 'seed_dump'
+gem 'newrelic_rpm'
 
 # Use unicorn as the app server
 # gem 'unicorn'
