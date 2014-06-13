@@ -56,53 +56,53 @@ $typeahead-highlight: #f0f0f0;
 .navbar-static-top {
   min-height: 0;
   background-color: $navbar-purple;
-};
+}
 
 .navbar-text-welcome {
   color: white;
-};
+}
 
 .navbar-text-username {
   font-weight: bold;
-};
+}
 
 .nav-account-items {
   margin-top: -29px;
-};
+}
 
 .nav-account-items > li {
   margin: 5px 5px;
-};
+}
 
 .btn-white {
   background-color: white;
   color: $btn-dark-purple;
-};
+}
 
 .btn-white:hover {
   background-color: $btn-barely-purple;
   color: $btn-dark-purple;
-};
+}
 
 .btn-purple {
   background-color: $btn-dark-purple;
   color: white;
   border: 0;
-};
+}
 
 .btn-purple:hover {
   background-color: $btn-dark-purple-hover;
   color: white;
-};
+}
 
 .btn-purple:focus {
   background-color: $btn-dark-purple-hover;
   color: white;
-};
+}
 
 .category-pills {
 
-};
+}
 
 .nav-pills > li > a {
   text-align: center;  
@@ -121,29 +121,29 @@ $typeahead-highlight: #f0f0f0;
 //   font-size: 12px;
 //   width: 500px;
 //   margin-left: 16px;
-// };
+// }
 
 //anchor tag stuff
 a {
   color: $a-dark-purple;
-};
+}
 
 a:hover {
   color: $a-dark-purple;
-};
+}
 
 .category-items {
   margin: 20px 20px 10px 20px;
   width: 508px;
-};
+}
 
 .pill-item {
   width: 100px;
-};
+}
 
 .pill-item > a {
   margin: auto;
-};
+}
 
 .logo-container {
   margin: 10px 10px 0 10px;
@@ -154,16 +154,16 @@ a:hover {
 
 .btn-post-new-deal {
   margin: 30px 30px 20px 30px;
-};
+}
 
 .btn-post-new-deal:hover {
   margin: 30px 30px 20px 30px;
-};
+}
 
 .new-deal-form {
   margin-top: 5px;
   padding-left: 0;
-};
+}
 
 .modal-footer {
   margin-top: 0;
@@ -183,7 +183,7 @@ a:hover {
   border-top: 1px solid $deal-row-top-row;
   padding: 5px 0 0 0;
   margin: 0;
-};
+}
 
 .deal-row-container {
   width: 100%;
@@ -191,7 +191,7 @@ a:hover {
   padding: 0;
   margin: 0;
   float: left;
-};
+}
 
 .deal-tile-container {
   width: 200px;
@@ -203,19 +203,19 @@ a:hover {
   padding-top: 10px;
   padding-bottom: 10px;
   margin-bottom: 5px;
-};
+}
 
 .deal-tile-container:hover {
   background-color: $deal-tile-hover;
   border-radius: 8px;
   padding-bottom: 10px;
   margin-bottom: 5px;
-};
+}
 
 .deal-tile-image {
   display: block;
   margin: auto;
-};
+}
 
 .deal-tile-image-container {
   width: 150px;
@@ -250,54 +250,54 @@ a:hover {
 
 .deal-image {
   margin: 3px;
-};
+}
 
 .btn-vote, .btn-vote:hover {
   border: 0;
   border-radius: 50%;
   padding: 0 0 0 0;
   font-size: 16px;
-};
+}
 
 .btn-vote:focus {
   outline: none;
-};
+}
 
 .deal-votes {
   margin: 5px 0;
-};
+}
 
 .deal-upvote, .deal-downvote {
   background-color: white;
   color: $btn-light;
   margin: 0 0;
-};
+}
 
 .deal-upvote:hover, .deal-downvote:hover {
   background-color: white;
   color: $btn-light-hover;
   margin: 0 0;
-};
+}
 
 .btn-deal-update {
   margin-right: 5px;
-};
+}
 
 .btn-deal-delete {
   
-};
+}
 
 .comment-upvote, .comment-downvote {
   background-color: white;
   color: $btn-light;
   margin: 0 0;
-};
+}
 
 .comment-upvote:hover, .comment-downvote:hover {
   background-color: white;
   color: $btn-light-hover;
   margin: 0 0;
-};
+}
 
 .upvoted {
   background-color: white;
@@ -326,7 +326,7 @@ a:hover {
 ul {
   list-style-type: none;
 //  margin: 5px 0;
-};
+}
 
 .deal-external-link {
   margin-left: 4px;
@@ -339,7 +339,7 @@ ul {
   padding: 4px 5px 2px 6px;
   border-radius: 5px;
   font-size: 14px;
-};
+}
 
 .deal-votes-container {
   margin: 5px;
@@ -349,7 +349,7 @@ ul {
   width: 825px;
   margin-bottom: 15px;
   //height: 200px;
-};
+}
 
 .comment-container {
   margin: 7px 0;
@@ -372,15 +372,15 @@ ul {
   width: 825px;
   margin-bottom: 15px;
   //height: 200px;
-};
+}
 
 .comment-items {
   padding: 10px 0 10px 20px;
-};
+}
 
 .comment-items > ul {
   padding: 10px 0 10px 10px;
-};
+}
 
 .btn-comment-reply {
   display: none;
@@ -389,11 +389,11 @@ ul {
 
 .comment-body-text {
   white-space: pre;
-};
+}
 
 .comment-author-text {
   font-size: 10px;
-};
+}
 
 .vote-area-container {
   width: 50px;
@@ -405,7 +405,7 @@ ul {
   border-top: 1px solid;
   border-color: #DDD;
   padding-top: 10px;
-};
+}
 
 
 .deal-recent-container {
@@ -414,15 +414,15 @@ ul {
   float: right;
   margin-top: 10px;
   display: inline-block;
-};
+}
 
 .recent-deal-text {
   font-size: 12px;
-};
+}
 
 .recent-deal-votes-text {
 
-};
+}
 
 //typeahead
 
@@ -482,25 +482,25 @@ ul {
 
 .popover, .popover-title {
   font-size: 12px;
-};
+}
 
 .popover {
   width: 200px;
   webkit-box-shadow: 0 0 0;
   box-shadow: 0 0 0;
-};
+}
 
 .popover-title {
   text-align: center;
   padding: 0;
   background-color: white;
-};
+}
 
 //form
 
 .label-category {
   font-size: 13px;
-};
+}
 
 .category-container {
   padding: 0 5px;
