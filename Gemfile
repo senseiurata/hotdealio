@@ -38,6 +38,7 @@ gem 'figaro'
 gem 'kaminari'
 gem 'seed_dump'
 gem 'newrelic_rpm'
+gem 'addressable'
 
 # Use unicorn as the app server
 # gem 'unicorn'

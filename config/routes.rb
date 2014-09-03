@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :user_votes, only: [:create, :update]
   end
 
-
   root to: "static_pages#root"
+
+  get "proxy" => "proxy#get", as: "proxy"
 end
